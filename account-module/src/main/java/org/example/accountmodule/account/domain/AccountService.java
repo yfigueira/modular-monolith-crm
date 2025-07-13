@@ -16,4 +16,6 @@ public interface AccountService {
     Account update(UUID id, Account account);
 
     void delete(UUID id);
+
+    Contact addContact(UUID accountId, Contact contact);
 }
