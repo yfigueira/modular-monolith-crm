@@ -1,0 +1,43 @@
+services:
+  modular-monolith-crm-db:
+    container_name: modular-monolith-crm-db
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - modular-monolith-crm-data:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - modular-monolith-crm-net
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin" ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  modular-monolith-crm-auth-server:
+    container_name: modular-monolith-crm-auth-server
+    image: quay.io/keycloak/keycloak:26.0.0
+    ports:
+      - "9000:8080"
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: secret
+    volumes:
+      - ./docs/crm-realm.json:/opt/keycloak/data/import/crm-realm.json
+    command:
+      - "start-dev"
+      - "--import-realm"
+    networks:
+      - modular-monolith-crm-net
+
+
+networks:
+  modular-monolith-crm-net:
+    driver: bridge
+
+volumes:
+  modular-monolith-crm-data:

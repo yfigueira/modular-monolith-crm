@@ -1,0 +1,27 @@
+spring:
+  application:
+    name: bootstrap
+  profiles:
+    active: dev
+  datasource:
+    url: ${DATABASE_URL}/${DATABASE_NAME}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+app:
+  cors:
+    allowed-origins: http://localhost:4200
+  auth-server:
+    url: ${AUTH_SERVER_URL}
+    realm: ${AUTH_SERVER_REALM}
+    client-id: ${AUTH_SERVER_API_CLIENT_ID}
+    client-secret: ${AUTH_SERVER_API_CLIENT_SECRET}
+
+server:
+  port: 8000
+  servlet:
+    context-path: /api
