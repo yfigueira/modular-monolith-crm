@@ -1,0 +1,45 @@
+name: Account Module Continuous Integration Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - account-module/**
+
+jobs:
+  compile:
+    name: Compile Account Module
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: 'corretto'
+
+      - name: Compile module
+        run: mvn -pl account-module -am clean compile
+
+  unit-test:
+    name: Run unit tests
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: 'corretto'
+
+      - name: Run unit tests
+        run: mvn -pl account-module -am clean test

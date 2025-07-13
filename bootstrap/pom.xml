@@ -30,6 +30,7 @@
     <properties>
         <user-module.version>0.0.1-SNAPSHOT</user-module.version>
         <activity-module.version>0.0.1-SNAPSHOT</activity-module.version>
+        <account-module.version>0.0.1-SNAPSHOT</account-module.version>
     </properties>
 
     <dependencies>
@@ -81,6 +82,11 @@
             <groupId>org.example</groupId>
             <artifactId>activity-module</artifactId>
             <version>${activity-module.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>account-module</artifactId>
+            <version>${account-module.version}</version>
         </dependency>
     </dependencies>
 
