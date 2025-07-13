@@ -53,4 +53,11 @@ class ActivityDatabaseRepository implements ActivityRepository {
 
         jpaRepository.delete(entity);
     }
+
+    @Override
+    public List<Activity> findByEntity(UUID entityId) {
+        return jpaRepository.findByEntity(entityId).stream()
+                .map(mapper::toDomain)
+                .toList();
+    }
 }

@@ -48,6 +48,11 @@ public class ActivityServiceImpl implements ActivityService {
         repository.delete(id);
     }
 
+    @Override
+    public List<Activity> getByEntity(UUID entityId) {
+        return repository.findByEntity(entityId);
+    }
+
     private Activity fetchOwner(Activity activity) {
         var owner = userService.getById(activity.owner().id());
         return activity.withOwner(owner);
