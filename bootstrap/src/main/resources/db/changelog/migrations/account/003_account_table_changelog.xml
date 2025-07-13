@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="yfp">
+        <createTable tableName="account" schemaName="account">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="name" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="country" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="city" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="tin" type="varchar(20)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="street" type="varchar(50)" />
+            <column name="street_number" type="varchar(10)" />
+            <column name="zip_code" type="varchar(10)" />
+            <column name="web_url" type="varchar" />
+            <column name="version" type="bigint" />
+            <column name="created_at" type="timestamp" />
+            <column name="updated_at" type="timestamp" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="yfp">
+        <createProcedure schemaName="account">
+            CREATE TRIGGER tr_update_account_audit_columns
+                BEFORE INSERT OR UPDATE ON account.account
+                    FOR EACH ROW EXECUTE FUNCTION common.update_audit_columns()
+        </createProcedure>
+    </changeSet>
+</databaseChangeLog>
