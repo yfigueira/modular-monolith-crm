@@ -12,5 +12,9 @@ public interface AccountRepository {
 
     Optional<Account> findById(UUID id);
 
+    Account update(UUID id, Account account);
+
+    void delete(UUID id);
+
     Boolean existsByTin(String tin);
 }

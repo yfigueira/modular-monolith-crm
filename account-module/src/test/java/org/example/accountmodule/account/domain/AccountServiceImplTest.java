@@ -104,4 +104,19 @@ class AccountServiceImplTest {
         // then
         assertThat(result, is(equalTo(account.withContacts(contacts))));
     }
+
+    @Test
+    void whenIdMismatchOnUpdate_ShouldThrowAccountServiceExceptionActionNotAllowed() {
+        // given
+        var argumentId = UUID.randomUUID();
+        var accountId = UUID.randomUUID();
+        var account = Account.builder()
+                .id(accountId)
+                .build();
+
+        // when, then
+        assertThatThrownBy(() -> SUT.update(argumentId, account))
+                .isInstanceOf(AccountException.ActionNotAllowedException.class)
+                .hasMessage("Action on Account not allowed :: id mismatch");
+    }
 }

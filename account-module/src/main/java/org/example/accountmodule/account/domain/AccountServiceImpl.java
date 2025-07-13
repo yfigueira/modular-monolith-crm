@@ -35,6 +35,19 @@ class AccountServiceImpl implements AccountService {
                 .orElseThrow(() -> AccountException.notFound(Account.class, id));
     }
 
+    @Override
+    public Account update(UUID id, Account account) {
+        if (!account.id().equals(id)) {
+            throw AccountException.actionNotAllowed(Account.class, "id mismatch");
+        }
+        return repository.update(id, account);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        repository.delete(id);
+    }
+
     private Account fetchContacts(Account account) {
         var contacts = contactService.getByCompany(account.id());
         return account.withContacts(contacts);

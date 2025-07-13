@@ -57,4 +57,16 @@ public class AccountExceptionHandler {
                 .status(HttpStatus.BAD_REQUEST)
                 .body(exceptionResponse);
     }
+
+    @ExceptionHandler(AccountException.ActionNotAllowedException.class)
+    public ResponseEntity<ExceptionResponse> handleActionNotAllowedException(AccountException.ActionNotAllowedException ex) {
+        var exceptionResponse = ExceptionResponse.builder()
+                .message(ex.getMessage())
+                .timestamp(LocalDateTime.now())
+                .build();
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(exceptionResponse);
+    }
 }
