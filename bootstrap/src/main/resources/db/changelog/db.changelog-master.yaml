@@ -1,4 +1,7 @@
 databaseChangeLog:
   - includeAll:
-      path: "migrations"
+      path: "migrations/common"
+      relativeToChangelogFile: true
+  - includeAll:
+      path: "migrations/activity"
       relativeToChangelogFile: true

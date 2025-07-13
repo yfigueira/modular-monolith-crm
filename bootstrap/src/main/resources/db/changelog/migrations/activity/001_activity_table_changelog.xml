@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="yfp">
+        <sql>
+            CREATE SCHEMA activity;
+        </sql>
+    </changeSet>
+
+    <changeSet id="2" author="yfp">
+        <createTable tableName="activity" schemaName="activity">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="type" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="subject" type="varchar(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="scheduled_at" type="timestamp">
+                <constraints nullable="false" />
+            </column>
+            <column name="entity" type="uuid">
+                <constraints nullable="false" />
+            </column>
+            <column name="entity_type" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="owner" type="uuid">
+                <constraints nullable="false" />
+            </column>
+            <column name="description" type="varchar" />
+            <column name="completed_at" type="timestamp" />
+            <column name="status" type="int" />
+            <column name="version" type="bigint" />
+            <column name="created_at" type="timestamp" />
+            <column name="updated_at" type="timestamp" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="yfp">
+        <createProcedure schemaName="activity">
+            CREATE TRIGGER tr_update_activity_audit_columns
+                BEFORE INSERT OR UPDATE ON activity.activity
+                    FOR EACH ROW EXECUTE FUNCTION common.update_audit_columns()
+        </createProcedure>
+    </changeSet>
+
+</databaseChangeLog>

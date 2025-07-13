@@ -19,6 +19,7 @@
     <modules>
         <module>bootstrap</module>
         <module>user-module</module>
+        <module>activity-module</module>
     </modules>
 
     <url/>

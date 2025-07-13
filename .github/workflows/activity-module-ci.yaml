@@ -1,0 +1,49 @@
+name: Activity Module Continuous Integration Pipeline
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - activity-module/**
+
+jobs:
+  compile:
+    name: Compile Activity Module
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: 'corretto'
+
+      - name: Compile module
+        run: |
+          cd activity-module
+          mvn clean compile
+
+  unit-test:
+    name: Run unit tests
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: 'corretto'
+
+      - name: Run unit tests
+        run: |
+          cd activity-module
+          mvn clean test
