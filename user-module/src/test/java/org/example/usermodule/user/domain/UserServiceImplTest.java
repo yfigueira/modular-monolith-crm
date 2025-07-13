@@ -59,4 +59,9 @@ class UserServiceImplTest {
                 .hasMessage("User not found :: %s".formatted(unknownId));
 
     }
+
+    @Test
+    void debugTest() {
+        assertThat(true, is(true));
+    }
 }
