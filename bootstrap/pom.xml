@@ -29,6 +29,7 @@
 
     <properties>
         <user-module.version>0.0.1-SNAPSHOT</user-module.version>
+        <activity-module.version>0.0.1-SNAPSHOT</activity-module.version>
     </properties>
 
     <dependencies>
@@ -75,6 +76,11 @@
             <groupId>org.example</groupId>
             <artifactId>user-module</artifactId>
             <version>${user-module.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>activity-module</artifactId>
+            <version>${activity-module.version}</version>
         </dependency>
     </dependencies>
 
