@@ -15,4 +15,6 @@ public interface ActivityRepository {
     List<Activity> findAll();
 
     Activity update(UUID id, Activity activity);
+
+    void delete(UUID id);
 }

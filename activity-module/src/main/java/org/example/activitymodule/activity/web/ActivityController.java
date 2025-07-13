@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.activitymodule.ActivityService;
 import org.example.activitymodule.activity.web.dto.ActivityDto;
 import org.example.activitymodule.activity.web.dto.ActivitySummary;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -47,5 +48,11 @@ public class ActivityController {
         var activity = ActivityDto.mapper().toDomain(dto);
         var updatedActivity = service.update(id, activity);
         return ActivityDto.mapper().toDto(updatedActivity);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> delete(@PathVariable UUID id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

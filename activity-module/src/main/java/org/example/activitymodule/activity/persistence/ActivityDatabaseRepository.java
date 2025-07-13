@@ -45,4 +45,12 @@ class ActivityDatabaseRepository implements ActivityRepository {
                 .map(mapper::toDomain)
                 .orElseThrow(() -> ActivityException.notFound(Activity.class, id));
     }
+
+    @Override
+    public void delete(UUID id) {
+        var entity = jpaRepository.findById(id)
+                .orElseThrow(() -> ActivityException.notFound(Activity.class, id));
+
+        jpaRepository.delete(entity);
+    }
 }

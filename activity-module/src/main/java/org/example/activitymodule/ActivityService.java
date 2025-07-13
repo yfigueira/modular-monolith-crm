@@ -12,4 +12,6 @@ public interface ActivityService {
     List<Activity> getAll();
 
     Activity update(UUID id, Activity activity);
+
+    void delete(UUID id);
 }
