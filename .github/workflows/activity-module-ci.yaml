@@ -24,9 +24,7 @@ jobs:
           distribution: 'corretto'
 
       - name: Compile module
-        run: |
-#          cd activity-module
-          mvn -pl activity-module -am clean compile
+        run: mvn -pl activity-module -am clean compile
 
   unit-test:
     name: Run unit tests
@@ -44,6 +42,4 @@ jobs:
           distribution: 'corretto'
 
       - name: Run unit tests
-        run: |
-          cd activity-module
-          mvn clean test
+        run: mvn -pl activity-module clean test
