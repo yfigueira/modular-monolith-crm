@@ -25,7 +25,7 @@ jobs:
 
       - name: Compile module
         run: |
-          cd activity-module
+#          cd activity-module
           mvn clean compile
 
   unit-test:
