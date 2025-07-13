@@ -6,11 +6,13 @@ import lombok.Builder;
 import org.example.accountmodule.Contact;
 import org.example.accountmodule.account.domain.Account;
 import org.example.accountmodule.common.web.DtoMapper;
+import org.example.accountmodule.contact.domain.ContactPriority;
 import org.example.accountmodule.jobtitle.web.JobTitleDto;
 import org.example.activitymodule.activity.web.dto.ActivityDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -41,6 +43,17 @@ public record ContactDto(
 
         default UUID mapAccount(Account domain) {
             return domain.id();
+        }
+
+        default ContactPriority mapContactPriority(Integer dto) {
+            return Arrays.stream(ContactPriority.values())
+                    .filter(v -> v.getCode().equals(dto))
+                    .findFirst()
+                    .orElse(ContactPriority.LOW);
+        }
+
+        default Integer mapContactPriority(ContactPriority domain) {
+            return domain.getCode();
         }
     }
 

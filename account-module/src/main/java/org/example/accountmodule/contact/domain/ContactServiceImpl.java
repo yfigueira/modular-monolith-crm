@@ -36,6 +36,19 @@ class ContactServiceImpl implements ContactService {
     }
 
     @Override
+    public Contact update(UUID id, Contact contact) {
+        if (!contact.id().equals(id)) {
+            throw AccountException.actionNotAllowed(Contact.class, "id mismatch");
+        }
+        return repository.update(id, contact);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        repository.delete(id);
+    }
+
+    @Override
     public List<Contact> getByCompany(UUID companyId) {
         return repository.findByCompany(companyId);
     }

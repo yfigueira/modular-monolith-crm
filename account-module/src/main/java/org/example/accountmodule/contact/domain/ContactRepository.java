@@ -12,6 +12,10 @@ public interface ContactRepository {
 
     Optional<Contact> findById(UUID id);
 
+    Contact update(UUID id, Contact contact);
+
+    void delete(UUID id);
+
     List<Contact> findByCompany(UUID companyId);
 
     Boolean existsByEmail(String email);

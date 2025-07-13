@@ -4,8 +4,7 @@ import org.example.accountmodule.Contact;
 import org.example.accountmodule.account.domain.Account;
 import org.example.accountmodule.contact.domain.ContactPriority;
 import org.example.accountmodule.jobtitle.domain.JobTitle;
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingConstants;
+import org.mapstruct.*;
 
 import java.util.UUID;
 
@@ -15,6 +14,11 @@ interface ContactMapper {
     Contact toDomain(ContactEntity entity);
 
     ContactEntity toEntity(Contact contact);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "version", ignore = true)
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    ContactEntity updateEntity(Contact contact, @MappingTarget ContactEntity entity);
 
     default Integer mapContactPriority(ContactPriority domain) {
         return domain.getCode();

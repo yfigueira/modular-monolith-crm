@@ -9,5 +9,9 @@ public interface ContactService {
 
     Contact getById(UUID id);
 
+    Contact update(UUID id, Contact contact);
+
+    void delete(UUID id);
+
     List<Contact> getByCompany(UUID companyId);
 }
