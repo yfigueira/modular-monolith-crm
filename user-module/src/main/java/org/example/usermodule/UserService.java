@@ -1,4 +1,4 @@
-package org.example.usermodule.user.domain;
+package org.example.usermodule;
 
 import java.util.List;
 import java.util.UUID;

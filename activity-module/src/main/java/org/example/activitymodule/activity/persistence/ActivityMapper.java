@@ -4,7 +4,7 @@ import org.example.activitymodule.activity.domain.Activity;
 import org.example.activitymodule.activity.domain.ActivityStatus;
 import org.example.activitymodule.activity.domain.ActivityType;
 import org.example.activitymodule.activity.domain.EntityType;
-import org.example.activitymodule.user.domain.User;
+import org.example.usermodule.User;
 import org.mapstruct.*;
 
 import java.util.Arrays;

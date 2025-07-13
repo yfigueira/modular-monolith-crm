@@ -1,4 +1,4 @@
-package org.example.usermodule.user.domain;
+package org.example.usermodule;
 
 import lombok.Builder;
 

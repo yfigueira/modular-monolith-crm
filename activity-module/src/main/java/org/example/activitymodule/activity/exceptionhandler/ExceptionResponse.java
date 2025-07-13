@@ -1,4 +1,4 @@
-package org.example.activitymodule.exceptionhandler;
+package org.example.activitymodule.activity.exceptionhandler;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;

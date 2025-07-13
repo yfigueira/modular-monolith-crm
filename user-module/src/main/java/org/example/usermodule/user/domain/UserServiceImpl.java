@@ -1,6 +1,8 @@
 package org.example.usermodule.user.domain;
 
 import lombok.RequiredArgsConstructor;
+import org.example.usermodule.User;
+import org.example.usermodule.UserService;
 import org.example.usermodule.exception.UserException;
 import org.springframework.stereotype.Service;
 

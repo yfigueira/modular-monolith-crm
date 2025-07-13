@@ -1,6 +1,6 @@
 package org.example.usermodule.user.client;
 
-import org.example.usermodule.user.domain.User;
+import org.example.usermodule.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 

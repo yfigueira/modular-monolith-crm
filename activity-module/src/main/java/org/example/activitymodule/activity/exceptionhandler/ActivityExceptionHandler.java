@@ -1,5 +1,6 @@
-package org.example.activitymodule.exceptionhandler;
+package org.example.activitymodule.activity.exceptionhandler;
 
+import org.example.activitymodule.activity.exception.ActivityException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -12,6 +13,18 @@ import java.util.Set;
 
 @RestControllerAdvice
 public class ActivityExceptionHandler {
+
+    @ExceptionHandler(ActivityException.ResourceNotFoundException.class)
+    public ResponseEntity<ExceptionResponse> handleNotFoundException(ActivityException.ResourceNotFoundException ex) {
+        var exceptionResponse = ExceptionResponse.builder()
+                .message(ex.getMessage())
+                .timestamp(LocalDateTime.now())
+                .build();
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(exceptionResponse);
+    }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ExceptionResponse> handleInvalidArgumentException(MethodArgumentNotValidException ex) {
