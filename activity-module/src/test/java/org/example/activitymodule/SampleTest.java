@@ -10,4 +10,9 @@ public class SampleTest {
     void sampleTest() {
         assertTrue(true);
     }
+
+    @Test
+    void sampleTest2() {
+        assertTrue(true);
+    }
 }

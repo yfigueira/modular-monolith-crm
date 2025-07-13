@@ -26,7 +26,7 @@ jobs:
       - name: Compile module
         run: |
 #          cd activity-module
-          mvn clean compile
+          mvn -pl activity-module -am clean compile
 
   unit-test:
     name: Run unit tests
