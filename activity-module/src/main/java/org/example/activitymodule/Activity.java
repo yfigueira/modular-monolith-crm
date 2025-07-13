@@ -1,7 +1,10 @@
-package org.example.activitymodule.activity.domain;
+package org.example.activitymodule;
 
 import lombok.Builder;
 import lombok.With;
+import org.example.activitymodule.activity.domain.ActivityStatus;
+import org.example.activitymodule.activity.domain.ActivityType;
+import org.example.activitymodule.activity.domain.EntityType;
 import org.example.usermodule.User;
 
 import java.time.LocalDateTime;

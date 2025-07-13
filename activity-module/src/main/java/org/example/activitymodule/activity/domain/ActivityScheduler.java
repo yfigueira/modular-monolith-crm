@@ -1,5 +1,6 @@
 package org.example.activitymodule.activity.domain;
 
+import org.example.activitymodule.Activity;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;

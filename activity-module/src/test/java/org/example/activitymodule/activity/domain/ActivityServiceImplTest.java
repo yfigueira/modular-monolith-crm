@@ -1,6 +1,7 @@
 package org.example.activitymodule.activity.domain;
 
-import org.example.activitymodule.activity.exception.ActivityException;
+import org.example.activitymodule.Activity;
+import org.example.activitymodule.exception.ActivityException;
 import org.example.usermodule.User;
 import org.example.usermodule.UserService;
 import org.junit.jupiter.api.Test;
@@ -71,5 +72,20 @@ class ActivityServiceImplTest {
         assertThatThrownBy(() -> SUT.getById(unknownId))
                 .isInstanceOf(ActivityException.ResourceNotFoundException.class)
                 .hasMessage("Activity not found :: %s".formatted(unknownId));
+    }
+
+    @Test
+    void whenIdMismatchOnUpdate_ShouldThrowActivityServiceExceptionActionNotAllowed() {
+        // given
+        var argumentId = UUID.randomUUID();
+        var activityId = UUID.randomUUID();
+        var activity = Activity.builder()
+                .id(activityId)
+                .build();
+
+        // when, then
+        assertThatThrownBy(() -> SUT.update(argumentId, activity))
+                .isInstanceOf(ActivityException.ActionNotAllowedException.class)
+                .hasMessage("Action on Activity not allowed :: id mismatch");
     }
 }

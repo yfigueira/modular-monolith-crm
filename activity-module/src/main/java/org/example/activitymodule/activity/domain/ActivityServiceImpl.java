@@ -1,7 +1,9 @@
 package org.example.activitymodule.activity.domain;
 
 import lombok.RequiredArgsConstructor;
-import org.example.activitymodule.activity.exception.ActivityException;
+import org.example.activitymodule.Activity;
+import org.example.activitymodule.ActivityService;
+import org.example.activitymodule.exception.ActivityException;
 import org.example.usermodule.UserService;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,14 @@ public class ActivityServiceImpl implements ActivityService {
     @Override
     public List<Activity> getAll() {
         return repository.findAll();
+    }
+
+    @Override
+    public Activity update(UUID id, Activity activity) {
+        if (!activity.id().equals(id)) {
+            throw ActivityException.actionNotAllowed(Activity.class, "id mismatch");
+        }
+        return repository.update(id, activity);
     }
 
     private Activity fetchOwner(Activity activity) {

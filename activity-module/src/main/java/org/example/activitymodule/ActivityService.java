@@ -1,4 +1,4 @@
-package org.example.activitymodule.activity.domain;
+package org.example.activitymodule;
 
 import java.util.List;
 import java.util.UUID;
@@ -10,4 +10,6 @@ public interface ActivityService {
     Activity getById(UUID id);
 
     List<Activity> getAll();
+
+    Activity update(UUID id, Activity activity);
 }

@@ -1,8 +1,9 @@
 package org.example.activitymodule.activity.persistence;
 
 import lombok.RequiredArgsConstructor;
-import org.example.activitymodule.activity.domain.Activity;
+import org.example.activitymodule.Activity;
 import org.example.activitymodule.activity.domain.ActivityRepository;
+import org.example.activitymodule.exception.ActivityException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -34,5 +35,14 @@ class ActivityDatabaseRepository implements ActivityRepository {
         return jpaRepository.findAll().stream()
                 .map(mapper::toDomain)
                 .toList();
+    }
+
+    @Override
+    public Activity update(UUID id, Activity activity) {
+        return jpaRepository.findById(id)
+                .map(entity -> mapper.updateEntity(activity, entity))
+                .map(jpaRepository::save)
+                .map(mapper::toDomain)
+                .orElseThrow(() -> ActivityException.notFound(Activity.class, id));
     }
 }

@@ -3,7 +3,7 @@ package org.example.activitymodule.activity.web;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.activitymodule.activity.domain.ActivityService;
+import org.example.activitymodule.ActivityService;
 import org.example.activitymodule.activity.web.dto.ActivityDto;
 import org.example.activitymodule.activity.web.dto.ActivitySummary;
 import org.springframework.web.bind.annotation.*;
@@ -37,5 +37,15 @@ public class ActivityController {
         return service.getAll().stream()
                 .map(ActivitySummary.mapper()::toDto)
                 .toList();
+    }
+
+    @PutMapping("{id}")
+    public ActivityDto update(
+            @PathVariable UUID id,
+            @RequestBody @Valid ActivityDto dto
+    ) {
+        var activity = ActivityDto.mapper().toDomain(dto);
+        var updatedActivity = service.update(id, activity);
+        return ActivityDto.mapper().toDto(updatedActivity);
     }
 }

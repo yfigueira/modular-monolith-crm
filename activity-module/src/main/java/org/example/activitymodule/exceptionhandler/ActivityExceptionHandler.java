@@ -1,6 +1,6 @@
-package org.example.activitymodule.activity.exceptionhandler;
+package org.example.activitymodule.exceptionhandler;
 
-import org.example.activitymodule.activity.exception.ActivityException;
+import org.example.activitymodule.exception.ActivityException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -38,6 +38,18 @@ public class ActivityExceptionHandler {
 
         var exceptionResponse = ExceptionResponse.builder()
                 .validationErrors(errors)
+                .timestamp(LocalDateTime.now())
+                .build();
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(exceptionResponse);
+    }
+
+    @ExceptionHandler(ActivityException.ActionNotAllowedException.class)
+    public ResponseEntity<ExceptionResponse> handleActionNotAllowedException(ActivityException.ActionNotAllowedException ex) {
+        var exceptionResponse = ExceptionResponse.builder()
+                .message(ex.getMessage())
                 .timestamp(LocalDateTime.now())
                 .build();
 

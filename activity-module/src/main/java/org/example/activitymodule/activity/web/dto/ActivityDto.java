@@ -3,7 +3,7 @@ package org.example.activitymodule.activity.web.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
-import org.example.activitymodule.activity.domain.Activity;
+import org.example.activitymodule.Activity;
 import org.example.activitymodule.activity.domain.ActivityStatus;
 import org.example.activitymodule.activity.domain.ActivityType;
 import org.example.activitymodule.activity.domain.EntityType;
