@@ -42,4 +42,4 @@ jobs:
           distribution: 'corretto'
 
       - name: Run unit tests
-        run: mvn -pl activity-module clean test
+        run: mvn -pl activity-module -am clean test
