@@ -1,11 +1,10 @@
-package org.example.accountmodule;
+package org.example.accountmodule.contact.domain;
 
 import lombok.Builder;
 import lombok.With;
 import org.example.accountmodule.account.domain.Account;
-import org.example.accountmodule.contact.domain.ContactPriority;
 import org.example.accountmodule.jobtitle.domain.JobTitle;
-import org.example.activitymodule.Activity;
+import org.example.activitymodule.ActivityInternalDto;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,6 +21,6 @@ public record Contact(
         String phoneNumber,
         String privateEmail,
         String privatePhoneNumber,
-        @With List<Activity> activities
+        @With List<ActivityInternalDto> activities
 ) {
 }

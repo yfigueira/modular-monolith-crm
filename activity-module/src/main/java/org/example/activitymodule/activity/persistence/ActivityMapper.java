@@ -1,10 +1,10 @@
 package org.example.activitymodule.activity.persistence;
 
-import org.example.activitymodule.Activity;
+import org.example.activitymodule.activity.domain.Activity;
 import org.example.activitymodule.activity.domain.ActivityStatus;
 import org.example.activitymodule.activity.domain.ActivityType;
 import org.example.activitymodule.activity.domain.EntityType;
-import org.example.usermodule.User;
+import org.example.usermodule.UserInternalDto;
 import org.mapstruct.*;
 
 import java.util.Arrays;
@@ -55,11 +55,11 @@ interface ActivityMapper {
         return domain.getCode();
     }
 
-    default User mapOwner(UUID entity) {
-        return User.builder().id(entity).build();
+    default UserInternalDto mapOwner(UUID entity) {
+        return UserInternalDto.builder().id(entity).build();
     }
 
-    default UUID mapOwner(User domain) {
+    default UUID mapOwner(UserInternalDto domain) {
         return domain.id();
     }
 }

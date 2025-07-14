@@ -1,6 +1,5 @@
 package org.example.activitymodule.activity.domain;
 
-import org.example.activitymodule.Activity;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

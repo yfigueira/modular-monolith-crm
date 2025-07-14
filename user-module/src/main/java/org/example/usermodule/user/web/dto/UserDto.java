@@ -1,7 +1,7 @@
 package org.example.usermodule.user.web.dto;
 
 import lombok.Builder;
-import org.example.usermodule.User;
+import org.example.usermodule.user.domain.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

@@ -1,9 +1,8 @@
 package org.example.activitymodule.activity.domain;
 
-import org.example.activitymodule.Activity;
 import org.example.activitymodule.exception.ActivityException;
-import org.example.usermodule.User;
-import org.example.usermodule.UserService;
+import org.example.usermodule.UserInternalApi;
+import org.example.usermodule.UserInternalDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -26,7 +25,7 @@ class ActivityServiceImplTest {
     ActivityRepository repository;
 
     @Mock
-    UserService userService;
+    UserInternalApi userInternalApi;
 
     @InjectMocks
     ActivityServiceImpl SUT;
@@ -36,7 +35,7 @@ class ActivityServiceImplTest {
     void whenActivityFound_ShouldHaveOwner() {
         // given
         var userId = UUID.randomUUID();
-        var user = User.builder()
+        var user = UserInternalDto.builder()
                 .id(userId)
                 .firstName("Mock")
                 .lastName("User")
@@ -49,10 +48,10 @@ class ActivityServiceImplTest {
                 .type(ActivityType.PHONE_CALL)
                 .entityType(EntityType.LEAD)
                 .status(ActivityStatus.OPEN)
-                .owner(User.builder().id(userId).build())
+                .owner(UserInternalDto.builder().id(userId).build())
                 .build();
 
-        Mockito.when(userService.getById(userId)).thenReturn(user);
+        Mockito.when(userInternalApi.getInternalById(userId)).thenReturn(user);
         Mockito.when(repository.findById(activityId)).thenReturn(Optional.of(activity));
 
         // when

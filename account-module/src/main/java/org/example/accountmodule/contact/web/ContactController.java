@@ -3,7 +3,7 @@ package org.example.accountmodule.contact.web;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.accountmodule.ContactService;
+import org.example.accountmodule.contact.domain.ContactService;
 import org.example.accountmodule.contact.web.dto.ContactDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -2,7 +2,7 @@ package org.example.usermodule.user.client;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.example.usermodule.User;
+import org.example.usermodule.user.domain.User;
 import org.example.usermodule.user.domain.UserClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;

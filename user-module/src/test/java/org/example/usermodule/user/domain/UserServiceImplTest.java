@@ -1,6 +1,5 @@
 package org.example.usermodule.user.domain;
 
-import org.example.usermodule.User;
 import org.example.usermodule.exception.UserException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

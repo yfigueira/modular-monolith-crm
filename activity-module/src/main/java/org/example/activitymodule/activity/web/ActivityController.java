@@ -3,7 +3,7 @@ package org.example.activitymodule.activity.web;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.activitymodule.ActivityService;
+import org.example.activitymodule.activity.domain.ActivityService;
 import org.example.activitymodule.activity.web.dto.ActivityDto;
 import org.example.activitymodule.activity.web.dto.ActivitySummary;
 import org.springframework.http.ResponseEntity;

@@ -1,7 +1,7 @@
 package org.example.accountmodule.account.domain;
 
-import org.example.accountmodule.Contact;
-import org.example.accountmodule.ContactService;
+import org.example.accountmodule.contact.domain.Contact;
+import org.example.accountmodule.contact.domain.ContactService;
 import org.example.accountmodule.exception.AccountException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

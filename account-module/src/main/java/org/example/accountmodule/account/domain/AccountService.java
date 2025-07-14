@@ -1,6 +1,6 @@
 package org.example.accountmodule.account.domain;
 
-import org.example.accountmodule.Contact;
+import org.example.accountmodule.contact.domain.Contact;
 
 import java.util.List;
 import java.util.UUID;

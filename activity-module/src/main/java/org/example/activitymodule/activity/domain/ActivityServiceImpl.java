@@ -1,10 +1,10 @@
 package org.example.activitymodule.activity.domain;
 
 import lombok.RequiredArgsConstructor;
-import org.example.activitymodule.Activity;
-import org.example.activitymodule.ActivityService;
+import org.example.activitymodule.ActivityInternalApi;
+import org.example.activitymodule.ActivityInternalDto;
 import org.example.activitymodule.exception.ActivityException;
-import org.example.usermodule.UserService;
+import org.example.usermodule.UserInternalApi;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,10 +12,10 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class ActivityServiceImpl implements ActivityService {
+public class ActivityServiceImpl implements ActivityService, ActivityInternalApi {
 
     private final ActivityRepository repository;
-    private final UserService userService;
+    private final UserInternalApi userInternalApi;
 
     @Override
     public Activity create(Activity activity) {
@@ -49,12 +49,14 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public List<Activity> getByEntity(UUID entityId) {
-        return repository.findByEntity(entityId);
+    public List<ActivityInternalDto> getByEntity(UUID entityId) {
+        return repository.findByEntity(entityId).stream()
+                .map(ActivityInternalDto.mapper()::toDto)
+                .toList();
     }
 
     private Activity fetchOwner(Activity activity) {
-        var owner = userService.getById(activity.owner().id());
+        var owner = userInternalApi.getInternalById(activity.owner().id());
         return activity.withOwner(owner);
     }
 }

@@ -1,6 +1,6 @@
 package org.example.accountmodule.contact.persistence;
 
-import org.example.accountmodule.Contact;
+import org.example.accountmodule.contact.domain.Contact;
 import org.example.accountmodule.account.domain.Account;
 import org.example.accountmodule.contact.domain.ContactPriority;
 import org.example.accountmodule.jobtitle.domain.JobTitle;

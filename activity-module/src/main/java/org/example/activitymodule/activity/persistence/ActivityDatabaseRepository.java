@@ -1,7 +1,7 @@
 package org.example.activitymodule.activity.persistence;
 
 import lombok.RequiredArgsConstructor;
-import org.example.activitymodule.Activity;
+import org.example.activitymodule.activity.domain.Activity;
 import org.example.activitymodule.activity.domain.ActivityRepository;
 import org.example.activitymodule.exception.ActivityException;
 import org.springframework.stereotype.Repository;

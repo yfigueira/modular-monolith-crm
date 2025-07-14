@@ -1,7 +1,7 @@
 package org.example.accountmodule.contact.web.dto;
 
 import lombok.Builder;
-import org.example.accountmodule.Contact;
+import org.example.accountmodule.contact.domain.Contact;
 import org.example.accountmodule.common.web.DtoMapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

@@ -1,11 +1,9 @@
 package org.example.accountmodule.contact.domain;
 
 import lombok.RequiredArgsConstructor;
-import org.example.accountmodule.Contact;
-import org.example.accountmodule.ContactService;
 import org.example.accountmodule.exception.AccountException;
 import org.example.accountmodule.jobtitle.domain.JobTitleService;
-import org.example.activitymodule.ActivityService;
+import org.example.activitymodule.ActivityInternalApi;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,7 +14,7 @@ import java.util.UUID;
 class ContactServiceImpl implements ContactService {
 
     private final ContactRepository repository;
-    private final ActivityService activityService;
+    private final ActivityInternalApi activityInternalApi;
     private final JobTitleService jobTitleService;
 
     @Override
@@ -54,7 +52,7 @@ class ContactServiceImpl implements ContactService {
     }
 
     private Contact fetchActivities(Contact contact) {
-        var activities = activityService.getByEntity(contact.id());
+        var activities = activityInternalApi.getByEntity(contact.id());
         return contact.withActivities(activities);
     }
 

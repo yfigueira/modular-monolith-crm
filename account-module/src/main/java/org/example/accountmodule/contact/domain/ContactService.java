@@ -1,4 +1,4 @@
-package org.example.accountmodule;
+package org.example.accountmodule.contact.domain;
 
 import java.util.List;
 import java.util.UUID;

@@ -1,7 +1,7 @@
 package org.example.accountmodule.contact.persistence;
 
 import lombok.RequiredArgsConstructor;
-import org.example.accountmodule.Contact;
+import org.example.accountmodule.contact.domain.Contact;
 import org.example.accountmodule.contact.domain.ContactRepository;
 import org.example.accountmodule.exception.AccountException;
 import org.springframework.stereotype.Repository;

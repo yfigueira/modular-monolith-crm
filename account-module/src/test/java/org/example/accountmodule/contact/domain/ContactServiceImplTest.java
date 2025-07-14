@@ -1,11 +1,10 @@
 package org.example.accountmodule.contact.domain;
 
-import org.example.accountmodule.Contact;
 import org.example.accountmodule.exception.AccountException;
 import org.example.accountmodule.jobtitle.domain.JobTitle;
 import org.example.accountmodule.jobtitle.domain.JobTitleService;
-import org.example.activitymodule.Activity;
-import org.example.activitymodule.ActivityService;
+import org.example.activitymodule.ActivityInternalApi;
+import org.example.activitymodule.ActivityInternalDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -29,7 +28,7 @@ class ContactServiceImplTest {
     ContactRepository repository;
 
     @Mock
-    ActivityService activityService;
+    ActivityInternalApi activityInternalApi;
 
     @Mock
     JobTitleService jobTitleService;
@@ -89,8 +88,8 @@ class ContactServiceImplTest {
     void whenFound_ShouldReturnContactWithActivitiesAndJobTitle() {
         // given
         var activities = List.of(
-                Activity.builder().subject("Activity 1").build(),
-                Activity.builder().subject("Activity 2").build()
+                ActivityInternalDto.builder().subject("Activity 1").build(),
+                ActivityInternalDto.builder().subject("Activity 2").build()
         );
 
         var jobTitleId = UUID.randomUUID();
@@ -108,7 +107,7 @@ class ContactServiceImplTest {
                 .jobTitle(JobTitle.builder().id(jobTitleId).build())
                 .build();
 
-        Mockito.when(activityService.getByEntity(contactId)).thenReturn(activities);
+        Mockito.when(activityInternalApi.getByEntity(contactId)).thenReturn(activities);
         Mockito.when(jobTitleService.getById(jobTitleId)).thenReturn(jobTitle);
         Mockito.when(repository.findById(contactId)).thenReturn(Optional.of(contact));
 

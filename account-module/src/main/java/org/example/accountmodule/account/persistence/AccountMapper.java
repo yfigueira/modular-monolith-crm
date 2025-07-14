@@ -1,6 +1,6 @@
 package org.example.accountmodule.account.persistence;
 
-import org.example.accountmodule.Contact;
+import org.example.accountmodule.contact.domain.Contact;
 import org.example.accountmodule.account.domain.Account;
 import org.mapstruct.*;
 

@@ -1,11 +1,8 @@
-package org.example.activitymodule;
+package org.example.activitymodule.activity.domain;
 
-import lombok.Builder;
+import  lombok.Builder;
 import lombok.With;
-import org.example.activitymodule.activity.domain.ActivityStatus;
-import org.example.activitymodule.activity.domain.ActivityType;
-import org.example.activitymodule.activity.domain.EntityType;
-import org.example.usermodule.User;
+import org.example.usermodule.UserInternalDto;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -21,7 +18,7 @@ public record Activity(
         ActivityStatus status,
         UUID entity,
         EntityType entityType,
-        @With User owner,
+        @With UserInternalDto owner,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {

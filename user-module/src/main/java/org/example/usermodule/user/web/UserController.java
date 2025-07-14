@@ -1,7 +1,7 @@
 package org.example.usermodule.user.web;
 
 import lombok.RequiredArgsConstructor;
-import org.example.usermodule.UserService;
+import org.example.usermodule.user.domain.UserService;
 import org.example.usermodule.user.web.dto.UserDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

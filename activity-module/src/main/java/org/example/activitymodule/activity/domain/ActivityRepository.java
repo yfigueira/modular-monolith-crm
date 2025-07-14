@@ -1,7 +1,5 @@
 package org.example.activitymodule.activity.domain;
 
-import org.example.activitymodule.Activity;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
