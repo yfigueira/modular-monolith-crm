@@ -8,3 +8,6 @@ databaseChangeLog:
   - includeAll:
       path: "migrations/account"
       relativeToChangelogFile: true
+  - includeAll:
+      path: "migrations/lead"
+      relativeToChangelogFile: true

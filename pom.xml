@@ -21,6 +21,7 @@
         <module>user-module</module>
         <module>activity-module</module>
         <module>account-module</module>
+        <module>lead-module</module>
     </modules>
 
     <url/>

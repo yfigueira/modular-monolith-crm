@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="yfp">
+        <createTable tableName="lead" schemaName="lead">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="first_name" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="last_name" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+            <column name="email" type="varchar(100)">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="state" type="int">
+                <constraints nullable="false" />
+            </column>
+            <column name="job_title" type="uuid">
+                <constraints foreignKeyName="fk_lead_job_title" references="lead.job_title(id)" />
+            </column>
+            <column name="company" type="uuid">
+                <constraints foreignKeyName="fk_lead_company" references="lead.company(id)" />
+            </column>
+            <column name="owner" type="uuid">
+                <constraints nullable="false" />
+            </column>
+            <column name="is_active" type="boolean" />
+            <column name="city" type="varchar(100)" />
+            <column name="phone_number" type="varchar(20)" />
+            <column name="version" type="bigint" />
+            <column name="created_at" type="timestamp" />
+            <column name="updated_at" type="timestamp" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="yfp">
+        <createProcedure schemaName="lead">
+            CREATE TRIGGER tr_update_lead_audit_columns
+                BEFORE INSERT OR UPDATE ON lead.lead
+                    FOR EACH ROW EXECUTE FUNCTION common.update_audit_columns()
+        </createProcedure>
+    </changeSet>
+</databaseChangeLog>

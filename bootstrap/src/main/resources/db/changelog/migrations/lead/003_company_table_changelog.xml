@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="yfp">
+        <createTable tableName="company" schemaName="lead">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="name" type="varchar(20)">
+                <constraints nullable="false" />
+            </column>
+            <column name="created_at" type="timestamp" />
+            <column name="updated_at" type="timestamp" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="yfp">
+        <createProcedure schemaName="lead">
+            CREATE TRIGGER tr_update_company_audit_columns
+                BEFORE INSERT OR UPDATE ON lead.company
+                    FOR EACH ROW EXECUTE FUNCTION common.update_audit_columns()
+        </createProcedure>
+    </changeSet>
+</databaseChangeLog>
