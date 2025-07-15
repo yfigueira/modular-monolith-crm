@@ -26,7 +26,7 @@ class LeadJobTitleServiceImplTest {
     LeadJobTitleServiceImpl SUT;
 
     @Test
-    void whenAlreadyExists_ShouldThrowLeadServiceExceptionAlreadyExists() {
+    void whenAlreadyExists_ShouldThrowLeadExceptionAlreadyExists() {
         // given
         var newJobTitle = JobTitle.builder()
                 .name("Existing name")
@@ -62,7 +62,7 @@ class LeadJobTitleServiceImplTest {
     }
 
     @Test
-    void whenNotFound_ShouldThrowAccountServiceExceptionNotFound() {
+    void whenNotFound_ShouldThrowAccountExceptionNotFound() {
         // given
         var unknownId = UUID.randomUUID();
         Mockito.when(repository.findById(unknownId)).thenReturn(Optional.empty());

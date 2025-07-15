@@ -26,7 +26,7 @@ class CompanyServiceImplTest {
     CompanyServiceImpl SUT;
 
     @Test
-    void whenAlreadyExists_ShouldThrowLeadServiceExceptionAlreadyExists() {
+    void whenAlreadyExists_ShouldThrowLeadExceptionAlreadyExists() {
         // given
         var newCompany = Company.builder()
                 .id(UUID.randomUUID())
@@ -63,7 +63,7 @@ class CompanyServiceImplTest {
     }
 
     @Test
-    void whenNotFound_ShouldThrowAccountServiceExceptionNotFound() {
+    void whenNotFound_ShouldThrowAccountExceptionNotFound() {
         // given
         var unknownId = UUID.randomUUID();
         Mockito.when(repository.findById(unknownId)).thenReturn(Optional.empty());

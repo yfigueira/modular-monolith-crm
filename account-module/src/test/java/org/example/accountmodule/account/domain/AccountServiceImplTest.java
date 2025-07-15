@@ -32,7 +32,7 @@ class AccountServiceImplTest {
     AccountServiceImpl SUT;
 
     @Test
-    void whenAlreadyExists_ShouldThrowAccountServiceExceptionAlreadyExists() {
+    void whenAlreadyExists_ShouldThrowAccountExceptionAlreadyExists() {
         // given
         var newAccount = Account.builder()
                 .tin("0000000000")
@@ -68,7 +68,7 @@ class AccountServiceImplTest {
     }
 
     @Test
-    void whenNotFound_ShouldThrowAccountServiceExceptionNotFound() {
+    void whenNotFound_ShouldThrowAccountExceptionNotFound() {
         // given
         var unknownId = UUID.randomUUID();
         Mockito.when(repository.findById(unknownId)).thenReturn(Optional.empty());
@@ -106,7 +106,7 @@ class AccountServiceImplTest {
     }
 
     @Test
-    void whenIdMismatchOnUpdate_ShouldThrowAccountServiceExceptionActionNotAllowed() {
+    void whenIdMismatchOnUpdate_ShouldThrowAccountExceptionActionNotAllowed() {
         // given
         var argumentId = UUID.randomUUID();
         var accountId = UUID.randomUUID();

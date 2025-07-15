@@ -62,7 +62,7 @@ class ActivityServiceImplTest {
     }
 
     @Test
-    void whenActivityNotFound_ShouldThrowActivityServiceExceptionNotFound() {
+    void whenActivityNotFound_ShouldThrowActivityExceptionNotFound() {
         // given
         var unknownId = UUID.randomUUID();
         Mockito.when(repository.findById(unknownId)).thenReturn(Optional.empty());
@@ -74,7 +74,7 @@ class ActivityServiceImplTest {
     }
 
     @Test
-    void whenIdMismatchOnUpdate_ShouldThrowActivityServiceExceptionActionNotAllowed() {
+    void whenIdMismatchOnUpdate_ShouldThrowActivityExceptionActionNotAllowed() {
         // given
         var argumentId = UUID.randomUUID();
         var activityId = UUID.randomUUID();

@@ -37,7 +37,7 @@ class ContactServiceImplTest {
     ContactServiceImpl SUT;
 
     @Test
-    void whenAlreadyExists_ShouldThrowAccountServiceExceptionAlreadyExists() {
+    void whenAlreadyExists_ShouldThrowAccountExceptionAlreadyExists() {
         // given
         var newContact = Contact.builder()
                 .email("test@email.com")
@@ -73,7 +73,7 @@ class ContactServiceImplTest {
     }
 
     @Test
-    void whenNotFound_ShouldThrowAccountServiceExceptionNotFound() {
+    void whenNotFound_ShouldThrowAccountExceptionNotFound() {
         // given
         var unknownId = UUID.randomUUID();
         Mockito.when(repository.findById(unknownId)).thenReturn(Optional.empty());
