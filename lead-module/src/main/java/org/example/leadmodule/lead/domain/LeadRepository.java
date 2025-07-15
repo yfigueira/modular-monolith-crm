@@ -12,5 +12,9 @@ public interface LeadRepository {
 
     List<Lead> findAll();
 
+    Lead update(UUID id, Lead lead);
+
+    void delete(UUID id);
+
     Boolean existsByEmail(String email);
 }

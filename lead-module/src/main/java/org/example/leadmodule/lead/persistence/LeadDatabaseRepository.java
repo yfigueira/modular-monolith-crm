@@ -1,6 +1,7 @@
 package org.example.leadmodule.lead.persistence;
 
 import lombok.RequiredArgsConstructor;
+import org.example.leadmodule.exception.LeadException;
 import org.example.leadmodule.lead.domain.Lead;
 import org.example.leadmodule.lead.domain.LeadRepository;
 import org.springframework.stereotype.Repository;
@@ -34,6 +35,22 @@ class LeadDatabaseRepository implements LeadRepository {
         return jpaRepository.findAll().stream()
                 .map(mapper::toDomain)
                 .toList();
+    }
+
+    @Override
+    public Lead update(UUID id, Lead lead) {
+        return jpaRepository.findById(id)
+                .map(entity -> mapper.updateEntity(lead, entity))
+                .map(jpaRepository::save)
+                .map(mapper::toDomain)
+                .orElseThrow(() -> LeadException.notFound(Lead.class, id));
+    }
+
+    @Override
+    public void delete(UUID id) {
+        var entity = jpaRepository.findById(id)
+                .orElseThrow(() -> LeadException.notFound(Lead.class, id));
+        jpaRepository.delete(entity);
     }
 
     @Override

@@ -44,6 +44,19 @@ class LeadServiceImpl implements LeadService {
         return repository.findAll();
     }
 
+    @Override
+    public Lead update(UUID id, Lead lead) {
+        if (!lead.id().equals(id)) {
+            throw LeadException.actionNotAllowed(Lead.class, "id mismatch");
+        }
+        return repository.update(id, lead);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        repository.delete(id);
+    }
+
     private Lead fetchOwner(Lead lead) {
         var owner = userInternalApi.getInternalById(lead.owner().id());
         return lead.withOwner(owner);

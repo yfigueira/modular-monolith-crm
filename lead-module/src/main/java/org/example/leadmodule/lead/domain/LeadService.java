@@ -10,4 +10,8 @@ public interface LeadService {
     Lead getById(UUID id);
 
     List<Lead> getAll();
+
+    Lead update(UUID id, Lead lead);
+
+    void delete(UUID id);
 }

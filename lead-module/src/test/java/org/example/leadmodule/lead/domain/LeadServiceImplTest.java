@@ -73,4 +73,19 @@ class LeadServiceImplTest {
                 .isInstanceOf(LeadException.ResourceNotFoundException.class)
                 .hasMessage("Lead not found :: %s".formatted(unknownId));
     }
+
+    @Test
+    void whenIdMismatchOnUpdate_ShouldThrowLeadExceptionActionNotAllowed() {
+        // given
+        var argumentId = UUID.randomUUID();
+        var leadId = UUID.randomUUID();
+        var lead = Lead.builder()
+                .id(leadId)
+                .build();
+
+        // when, then
+        assertThatThrownBy(() -> SUT.update(argumentId, lead))
+                .isInstanceOf(LeadException.ActionNotAllowedException.class)
+                .hasMessage("Action on Lead not allowed :: id mismatch");
+    }
 }
