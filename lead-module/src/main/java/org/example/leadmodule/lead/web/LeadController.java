@@ -55,4 +55,13 @@ public class LeadController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("{id}/state/{stateCode}")
+     public ResponseEntity<?> changeState(
+             @PathVariable UUID id,
+             @PathVariable Integer stateCode
+    ) {
+        service.updateState(id, stateCode);
+        return ResponseEntity.ok().build();
+    }
 }

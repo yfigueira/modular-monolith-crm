@@ -3,12 +3,15 @@ package org.example.leadmodule.lead.domain;
 import lombok.RequiredArgsConstructor;
 import org.example.activitymodule.ActivityInternalApi;
 import org.example.leadmodule.company.domain.CompanyService;
+import org.example.leadmodule.event.LeadEventPublisher;
 import org.example.leadmodule.exception.LeadException;
 import org.example.leadmodule.jobtitle.domain.LeadJobTitleService;
 import org.example.usermodule.UserInternalApi;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -20,6 +23,7 @@ class LeadServiceImpl implements LeadService {
     private final CompanyService companyService;
     private final LeadJobTitleService jobTitleService;
     private final ActivityInternalApi activityInternalApi;
+    private final LeadEventPublisher eventPublisher;
 
     @Override
     public Lead create(Lead lead) {
@@ -57,6 +61,29 @@ class LeadServiceImpl implements LeadService {
         repository.delete(id);
     }
 
+    @Override
+    public void updateState(UUID id, Integer stateCode) {
+        var state = Arrays.stream(LeadState.values())
+                .filter(s -> s.getCode().equals(stateCode))
+                .findFirst()
+                .orElseThrow(() -> LeadException.actionNotAllowed(LeadState.class, "invalid state code"));
+
+        if (state.equals(LeadState.NOT_AVAILABLE)) {
+            throw LeadException.actionNotAllowed(LeadState.class, "state not assignable");
+        }
+
+        var lead = repository.findById(id)
+                .map(l -> l.withState(state))
+                .map(l -> l.withIsActive(isActiveInState(state)))
+                .orElseThrow(() -> LeadException.notFound(Lead.class, id));
+
+        var updatedLead = repository.update(id, lead);
+
+        if (state.equals(LeadState.QUALIFIED)) {
+            eventPublisher.publishLeadQualified(updatedLead);
+        }
+    }
+
     private Lead fetchOwner(Lead lead) {
         var owner = userInternalApi.getInternalById(lead.owner().id());
         return lead.withOwner(owner);
@@ -81,5 +108,9 @@ class LeadServiceImpl implements LeadService {
     private Lead fetchActivities(Lead lead) {
         var activities = activityInternalApi.getByEntity(lead.id());
         return lead.withActivities(activities);
+    }
+
+    private Boolean isActiveInState(LeadState state) {
+        return !(state.equals(LeadState.QUALIFIED) || state.equals(LeadState.DISQUALIFIED));
     }
 }

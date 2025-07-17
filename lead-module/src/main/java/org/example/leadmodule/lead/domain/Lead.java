@@ -20,7 +20,7 @@ public record Lead(
         String subject,
         String city,
         @With LeadState state,
-        Boolean isActive,
+        @With Boolean isActive,
         @With UserInternalDto owner,
         @With JobTitle jobTitle,
         @With Company company,

@@ -14,4 +14,6 @@ public interface LeadService {
     Lead update(UUID id, Lead lead);
 
     void delete(UUID id);
+
+    void updateState(UUID id, Integer stateCode);
 }
