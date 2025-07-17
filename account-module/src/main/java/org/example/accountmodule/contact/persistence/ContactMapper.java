@@ -6,6 +6,7 @@ import org.example.accountmodule.contact.domain.ContactPriority;
 import org.example.accountmodule.jobtitle.domain.JobTitle;
 import org.mapstruct.*;
 
+import java.util.Arrays;
 import java.util.UUID;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
@@ -20,23 +21,30 @@ interface ContactMapper {
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     ContactEntity updateEntity(Contact contact, @MappingTarget ContactEntity entity);
 
+    default ContactPriority mapContactPriority(Integer entity) {
+        return Arrays.stream(ContactPriority.values())
+                .filter(v -> v.getCode().equals(entity))
+                .findFirst()
+                .orElse(ContactPriority.LOW);
+    }
+
     default Integer mapContactPriority(ContactPriority domain) {
         return domain.getCode();
     }
 
     default JobTitle mapJobTitle(UUID entity) {
-        return JobTitle.builder().id(entity).build();
+        return entity == null ? null : JobTitle.builder().id(entity).build();
     }
 
     default UUID mapJobTitle(JobTitle domain) {
-        return domain.id();
+        return domain == null ? null : domain.id();
     }
 
     default Account mapAccount(UUID entity) {
-        return Account.builder().id(entity).build();
+        return entity == null ? null : Account.builder().id(entity).build();
     }
 
     default UUID mapAccount(Account domain) {
-        return domain.id();
+        return domain == null ? null : domain.id();
     }
 }
