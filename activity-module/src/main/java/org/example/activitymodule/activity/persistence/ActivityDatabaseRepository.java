@@ -60,4 +60,9 @@ class ActivityDatabaseRepository implements ActivityRepository {
                 .map(mapper::toDomain)
                 .toList();
     }
+
+    @Override
+    public void changeEntity(UUID currentEntity, UUID targetEntity) {
+        jpaRepository.changeEntity(currentEntity, targetEntity);
+    }
 }

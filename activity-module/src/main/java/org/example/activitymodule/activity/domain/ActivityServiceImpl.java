@@ -55,6 +55,11 @@ public class ActivityServiceImpl implements ActivityService, ActivityInternalApi
                 .toList();
     }
 
+    @Override
+    public void changeEntity(UUID currentEntity, UUID targetEntity) {
+        repository.changeEntity(currentEntity, targetEntity);
+    }
+
     private Activity fetchOwner(Activity activity) {
         var owner = userInternalApi.getInternalById(activity.owner().id());
         return activity.withOwner(owner);

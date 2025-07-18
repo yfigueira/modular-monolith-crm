@@ -14,4 +14,6 @@ public interface ActivityService {
     Activity update(UUID id, Activity activity);
 
     void delete(UUID id);
+
+    void changeEntity(UUID currentEntity, UUID targetEntity);
 }

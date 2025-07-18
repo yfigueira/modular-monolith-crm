@@ -17,4 +17,6 @@ public interface ActivityRepository {
     void delete(UUID id);
 
     List<Activity> findByEntity(UUID entityId);
+
+    void changeEntity(UUID currentEntity, UUID targetEntity);
 }

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 public class ContactEventListener {
 
     private final ContactService contactService;
+    private final ContactEventPublisher contactEventPublisher;
 
     @EventListener
     public void handleQualifiedLead(QualifiedLead qualifiedLead) {
@@ -28,6 +29,7 @@ public class ContactEventListener {
         try {
             var newContact = contactService.create(contact);
             log.info("Created contact from lead :: {}", newContact.toString());
+            contactEventPublisher.publishContactCreatedFromLead(qualifiedLead.id(), newContact.id());
         } catch (RuntimeException ex) {
             log.error(ex.getMessage());
         }
