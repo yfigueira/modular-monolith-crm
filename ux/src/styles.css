@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "JetBrains Mono", sans-serif;
+}
+
+:root {
+  --primary-navy: #1a3175;
+  --neutral-graphite: #373737;
+  --neutral-light-gray: #c0c0c0;
+  --neutral-dark-gray: #6f6f6f;
+  --neutral-white: #fcfcfc
+}

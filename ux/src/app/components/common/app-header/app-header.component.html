@@ -1,0 +1,13 @@
+<div class="app-header">
+  <div>
+    <h2>CRM</h2>
+  </div>
+  <div>
+    <h4>
+      {{ loggedUser() }}
+    </h4>
+  </div>
+  <div>
+      <fa-icon class="app-logout-icon" [icon]="signOutIcon" size="xl" (click)="logout()" />
+  </div>
+</div>
