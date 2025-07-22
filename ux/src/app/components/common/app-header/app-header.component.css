@@ -7,6 +7,7 @@
   background-color: var(--primary-navy);
   box-shadow: 0 3px 10px var(--neutral-light-gray);
   z-index: 100;
+  position: fixed;
 }
 
 .app-header > div {

@@ -5,10 +5,15 @@
   font-family: "JetBrains Mono", sans-serif;
 }
 
+body, html {
+  height: 100%;
+  width: 100%;
+}
+
 :root {
   --primary-navy: #1a3175;
   --neutral-graphite: #373737;
-  --neutral-light-gray: #c0c0c0;
+  --neutral-light-gray: #f3f3f3;
   --neutral-dark-gray: #6f6f6f;
   --neutral-white: #fcfcfc
 }

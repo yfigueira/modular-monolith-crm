@@ -1,0 +1,20 @@
+<div class="navbar">
+  <div>
+    <ul>
+      @for (route of routes; track route.label) {
+        <li class="nav-item">
+          <div class="nav-item-container">
+            <a
+              [routerLink]="route.routerLink"
+              [routerLinkActive]="['nav-item-active']"
+              [routerLinkActiveOptions]="{exact: true}"
+            >
+              <fa-icon [icon]="route.icon" size="lg" [fixedWidth]="true" />
+              <span>{{route.label}}</span>
+            </a>
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+</div>

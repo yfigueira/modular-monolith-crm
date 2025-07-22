@@ -1,0 +1,12 @@
+.app-body {
+  position: fixed;
+  top: 60px;
+  height: calc(100% - 60px);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 200px auto;
+}
+
+.app-main {
+  overflow-y: auto;
+}
