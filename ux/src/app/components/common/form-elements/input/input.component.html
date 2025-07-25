@@ -1,0 +1,11 @@
+<label [for]="id()">{{ label() }}</label>
+<br>
+<input class="app-input"
+  #inputElement
+  [id]="id()"
+  [name]="id()"
+  [required]="required()"
+  [placeholder]="placeholder()"
+  [value]="value()"
+  (input)="updateValue(inputElement.value)"
+/>

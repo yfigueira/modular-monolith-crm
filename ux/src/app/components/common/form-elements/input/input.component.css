@@ -1,0 +1,15 @@
+.app-input {
+  border: 1px solid var(--neutral-dark-gray);
+  border-radius: 4px;
+  color: var(--neutral-graphite);
+  outline: none;
+  font-size: medium;
+  padding: 2px;
+  height: 30px;
+  width: 280px;
+}
+
+.app-input:focus {
+  color: var(--primary-navy);
+  border-color: var(--primary-navy);
+}
