@@ -31,7 +31,8 @@
     </div>
     <hr>
     <div class="account-contacts-container">
-      <div style="display: flex; justify-content: end">
+      <div style="display: flex; justify-content: space-between">
+        <h2 style="color: var(--neutral-graphite)">Contacts</h2>
         <app-button name="add-contact" text="Add contact" [icon]="faUserPlus" [style]="ButtonStyle.INFO" (clickEvent)="openNewContactModal()" />
       </div>
       @if (activeAccount.contacts !== undefined && activeAccount.contacts.length != 0) {
