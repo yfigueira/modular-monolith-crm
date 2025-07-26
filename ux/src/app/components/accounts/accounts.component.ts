@@ -19,7 +19,7 @@ import {Dialog} from '@angular/cdk/dialog';
 import {NewAccountFormComponent} from './new-account-form/new-account-form.component';
 import {NewAccountContactFormComponent} from './new-account-contact-form/new-account-contact-form.component';
 import {Contact} from '../../models/contact/contact';
-import {Router} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-accounts',
@@ -27,7 +27,8 @@ import {Router} from '@angular/router';
     AccountListItemComponent,
     InputComponent,
     FaIconComponent,
-    ButtonComponent
+    ButtonComponent,
+    RouterLink
   ],
   templateUrl: './accounts.component.html',
   styleUrl: './accounts.component.css'

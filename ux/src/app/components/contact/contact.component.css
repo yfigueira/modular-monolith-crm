@@ -1,0 +1,15 @@
+.app-contact-return-container {
+  width: 120px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-size: large;
+  color: var(--neutral-dark-gray);
+}
+
+.app-contact-return-container:hover {
+  cursor: pointer;
+  color: var(--primary-amber);
+}

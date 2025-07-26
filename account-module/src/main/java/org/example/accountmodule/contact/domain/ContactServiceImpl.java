@@ -57,6 +57,9 @@ class ContactServiceImpl implements ContactService {
     }
 
     private Contact fetchJobTitle(Contact contact) {
+        if (contact.jobTitle() == null) {
+            return contact;
+        }
         var jobTitle = jobTitleService.getById(contact.jobTitle().id());
         return contact.withJobTitle(jobTitle);
     }

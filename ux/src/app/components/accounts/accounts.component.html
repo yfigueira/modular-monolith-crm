@@ -52,7 +52,7 @@
                 <td>{{ contact.firstName + ' ' + contact.lastName }}</td>
                 <td>{{ contact.email }}</td>
                 <td>{{ contact.phoneNumber }}</td>
-                <td style="width: 40px; max-width: 40px; text-align: center"><fa-icon [icon]="faPenToSquare" /></td>
+                <td style="width: 40px; max-width: 40px; text-align: center"><fa-icon [icon]="faPenToSquare" [routerLink]="['/contacts', contact.id]" /></td>
               </tr>
             }
           </tbody>

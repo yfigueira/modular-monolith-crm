@@ -3,6 +3,7 @@ import {DealsComponent} from './components/deals/deals.component';
 import {LeadsComponent} from './components/leads/leads.component';
 import {AccountsComponent} from './components/accounts/accounts.component';
 import {ContactsComponent} from './components/contacts/contacts.component';
+import {ContactComponent} from './components/contact/contact.component';
 
 export const routes: Routes = [
   {
@@ -20,5 +21,9 @@ export const routes: Routes = [
   {
     path: 'contacts',
     component: ContactsComponent
+  },
+  {
+    path: 'contacts/:id',
+    component: ContactComponent
   }
 ];
