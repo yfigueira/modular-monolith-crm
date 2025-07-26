@@ -1,0 +1,6 @@
+<button class="app-button" [class]="style()" (click)="handleClick()">
+  @if (icon()) {
+    <fa-icon [icon]="icon()!" />
+  }
+{{ text() }}
+</button>

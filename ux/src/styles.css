@@ -12,8 +12,13 @@ body, html {
 
 :root {
   --primary-navy: #1a3175;
+  --primary-amber: #c99d0e;
   --neutral-graphite: #373737;
   --neutral-light-gray: #f3f3f3;
   --neutral-dark-gray: #6f6f6f;
-  --neutral-white: #fcfcfc
+  --neutral-white: #fcfcfc;
+  --info: #4196ab;
+  --success: #41ab87;
+  --warning: #ab8d41;
+  --danger: #ab4146;
 }

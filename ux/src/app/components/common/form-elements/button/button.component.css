@@ -1,0 +1,33 @@
+.app-button {
+  height: 40px;
+  width: 200px;
+  font-size: medium;
+  border: 2px solid;
+  border-radius: 6px;
+  background-color: var(--neutral-white);
+}
+
+.app-button:hover {
+  cursor: pointer;
+  background-color: var(--neutral-light-gray);
+}
+
+.app-info-button {
+  color: var(--info);
+}
+
+.app-success-button {
+  color: var(--success);
+}
+
+.app-warning-button {
+  color: var(--warning);
+}
+
+.app-danger-button {
+  color: var(--danger);
+}
+
+.app-default-button {
+  color: var(--neutral-dark-gray)
+}
