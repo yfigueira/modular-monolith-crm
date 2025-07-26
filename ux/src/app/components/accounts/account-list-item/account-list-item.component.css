@@ -1,0 +1,19 @@
+.account-list-item-container {
+  border-bottom: 1px solid var(--neutral-light-gray);
+  height: 60px;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+}
+
+.account-list-item-container > div > p {
+  font-size: small;
+  color: var(--neutral-dark-gray)
+}
+
+.account-list-item-container:hover {
+  cursor: pointer;
+  color: var(--primary-amber);
+}

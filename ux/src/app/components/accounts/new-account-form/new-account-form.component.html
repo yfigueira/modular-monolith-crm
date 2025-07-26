@@ -1,0 +1,15 @@
+<div class="new-account-form-container">
+  <h2>New account</h2>
+  <br>
+  <app-input id="new-account-name" label="Name" [required]="true" [(value)]="newAccount.name" />
+  <app-input id="new-account-tin" label="Tax identfication number" [required]="true" [(value)]="newAccount.tin" />
+  <app-input id="new-account-web-url" label="Web page" [(value)]="newAccount.webUrl" />
+  <app-input id="new-account-country" label="Country" [required]="true" [(value)]="newAccount.country" />
+  <app-input id="new-account-city" label="City" [required]="true" [(value)]="newAccount.city" />
+  <app-input id="new-account-street" label="Street" [required]="true" [(value)]="newAccount.street" />
+  <app-input id="new-account-street-number" label="Street number" [(value)]="newAccount.streetNumber" />
+  <app-input id="new-account-zip-code" label="Zip code" [(value)]="newAccount.zipCode" />
+  <br>
+  <app-button name="create-new-account" text="Create account" [style]="ButtonStyle.SUCCESS" (clickEvent)="handleCreateAccount()" />
+  <span (click)="handleClose()">close</span>
+</div>

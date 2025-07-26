@@ -11,7 +11,7 @@ export class InputComponent {
   id = input.required<string>();
   label = input<string>('');
   required = input<boolean>(false);
-  placeholder = input<string>('...');
+  placeholder = input<string>('');
 
   value = model<string | undefined>('');
 

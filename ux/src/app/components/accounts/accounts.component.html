@@ -1,1 +1,66 @@
-<p>accounts works!</p>
+<div class="accounts-display-container">
+  <div class="accounts-list-container">
+    <div (click)="openNewAccountModal()">
+      <fa-icon [icon]="faPlus" />
+      <p>Create account</p>
+    </div>
+    @for (account of accounts; track account.id) {
+      <app-account-list-item [data]=account (clickEvent)="selectAccount($event)" />
+    }
+  </div>
+  <div class="account-details-container">
+    <div class="account-management-actions-container">
+      <app-button name="save-account" text="Save" [icon]="faFloppyDisk" [style]="ButtonStyle.INFO" (clickEvent)="updateAccount()" />
+      <app-button name="remove-account" text="Remove" [icon]="faTrashCan" [style]="ButtonStyle.DANGER" (clickEvent)="deleteAccount()" />
+    </div>
+    <div class="account-form-container">
+      <div>
+        <app-input id="name" label="Name" placeholder="Account name" [required]="true" [(value)]="activeAccount.name"  />
+        <app-input id="tin" label="Tax identification number" placeholder="Tax identification number" [required]="true" [(value)]="activeAccount.tin"  />
+        <app-input id="web-page" label="Web page" placeholder="Web page" [required]="true" [(value)]="activeAccount.webUrl"  />
+      </div>
+      <div>
+        <app-input id="country" label="Country" placeholder="Country" [required]="true" [(value)]="activeAccount.country"  />
+        <app-input id="city" label="City" placeholder="City" [required]="true" [(value)]="activeAccount.city"  />
+      </div>
+      <div>
+        <app-input id="street" label="Street" placeholder="Street" [required]="true" [(value)]="activeAccount.street"  />
+        <app-input id="street-number" label="Street number" placeholder="Street number" [required]="true" [(value)]="activeAccount.streetNumber"  />
+        <app-input id="zip-code" label="Zip code" placeholder="Zip code" [required]="true" [(value)]="activeAccount.zipCode"  />
+      </div>
+    </div>
+    <hr>
+    <div class="account-contacts-container">
+      <div style="display: flex; justify-content: end">
+        <app-button name="add-contact" text="Add contact" [icon]="faUserPlus" [style]="ButtonStyle.INFO" (clickEvent)="openNewContactModal()" />
+      </div>
+      @if (activeAccount.contacts !== undefined && activeAccount.contacts.length != 0) {
+        <table>
+          <thead>
+          <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>email</th>
+            <th>phone number</th>
+            <th><fa-icon [icon]="faEllipsisVertical" /></th>
+          </tr>
+          </thead>
+          <tbody>
+            @for (contact of activeAccount.contacts; track contact.id) {
+              <tr>
+                <td style="max-width: 250px">{{ contact.id }}</td>
+                <td>{{ contact.firstName + ' ' + contact.lastName }}</td>
+                <td>{{ contact.email }}</td>
+                <td>{{ contact.phoneNumber }}</td>
+                <td style="width: 40px; max-width: 40px; text-align: center"><fa-icon [icon]="faPenToSquare" /></td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      } @else {
+        <fa-icon [icon]="faEllipsis" size="2xl" style="color: var(--neutral-dark-gray); opacity: 0.5" />
+      }
+    </div>
+  </div>
+</div>
+

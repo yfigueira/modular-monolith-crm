@@ -1,0 +1,11 @@
+<div class="account-list-item-container" (click)="handleClick()">
+  <div style="width: 80%">
+    <h4>
+      {{ data().name }}
+    </h4>
+    <p>{{ data().city}}, {{ data().country }}</p>
+  </div>
+  <div>
+    <fa-icon [icon]="faChevronRight" />
+  </div>
+</div>

@@ -1,0 +1,112 @@
+.accounts-display-container {
+  display: grid;
+  grid-template-columns: 230px auto;
+  height: 100%
+}
+
+.accounts-list-container {
+  color: var(--neutral-graphite);
+  border-right: 1px solid var(--primary-amber);
+  height: 100%;
+  width: 230px;
+  overflow-y: auto;
+}
+
+.accounts-list-container > div {
+  border-bottom: 1px solid var(--primary-amber);
+  color: var(--neutral-dark-gray);
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.accounts-list-container > div:hover {
+  color: var(--primary-amber);
+  cursor: pointer;
+}
+
+.account-details-container {
+  height: auto;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.account-details-container > hr {
+  height: 2px;
+  width: 94%;
+  color: var(--neutral-light-gray);
+  background-color: var(--neutral-light-gray);
+  border-width: 0;
+  margin: 50px auto;
+}
+
+.account-management-actions-container {
+  --padding-value: 20px;
+  height: 60px;
+  width: calc(100% - 2 * var(--padding-value));
+  padding: var(--padding-value);
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 20px;
+}
+
+.account-form-container {
+  height: auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 33.3% 33.3% auto;
+}
+
+.account-form-container > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.account-contacts-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.account-contacts-container > div, table {
+  width: 98%;
+}
+
+.account-contacts-container > table > thead {
+  color: var(--neutral-white);
+  background-color: var(--primary-navy);
+}
+
+.account-contacts-container > table > th, td {
+  padding: 5px;
+  width: 250px;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.account-contacts-container > table, tr, td, th {
+  border: 1px solid var(--primary-navy);
+  border-collapse: collapse;
+  height: 30px;
+}
+
+.account-contacts-container > table > tbody > tr > td > fa-icon {
+  font-size: large;
+  color: var(--neutral-dark-gray);
+}
+
+.account-contacts-container > table > tbody > tr > td > fa-icon:hover {
+  cursor: pointer;
+  color: var(--primary-amber);
+}

@@ -1,0 +1,11 @@
+<div class="new-account-contact-form-container">
+  <h2>New contact</h2>
+  <br>
+  <app-input id="new-account-contact-firstname" label="First name" [required]="true" [(value)]="newContact.firstName" />
+  <app-input id="new-account-contact-lastname" label="Last name" [required]="true" [(value)]="newContact.lastName" />
+  <app-input id="new-account-contact-email" label="Email" [required]="true" [(value)]="newContact.email" />
+  <app-input id="new-account-contact-phonenumber" label="Phone number" [(value)]="newContact.phoneNumber" />
+  <br>
+  <app-button name="create-new-account-contact" text="Create contact" [style]="ButtonStyle.SUCCESS" (clickEvent)="handleCreateContact()" />
+  <span (click)="handleClose()">close</span>
+</div>
