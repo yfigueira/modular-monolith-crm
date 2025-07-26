@@ -13,3 +13,7 @@
   color: var(--primary-navy);
   border-color: var(--primary-navy);
 }
+
+label {
+  font-size: small;
+}
