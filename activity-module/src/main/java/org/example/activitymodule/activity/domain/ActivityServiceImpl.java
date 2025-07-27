@@ -4,7 +4,6 @@ import lombok.RequiredArgsConstructor;
 import org.example.activitymodule.ActivityInternalApi;
 import org.example.activitymodule.ActivityInternalDto;
 import org.example.activitymodule.exception.ActivityException;
-import org.example.usermodule.UserInternalApi;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.UUID;
 public class ActivityServiceImpl implements ActivityService, ActivityInternalApi {
 
     private final ActivityRepository repository;
-    private final UserInternalApi userInternalApi;
 
     @Override
     public Activity create(Activity activity) {
@@ -26,7 +24,6 @@ public class ActivityServiceImpl implements ActivityService, ActivityInternalApi
     @Override
     public Activity getById(UUID id) {
         return repository.findById(id)
-                .map(this::fetchOwner)
                 .orElseThrow(() -> ActivityException.notFound(Activity.class, id));
     }
 
@@ -58,10 +55,5 @@ public class ActivityServiceImpl implements ActivityService, ActivityInternalApi
     @Override
     public void changeEntity(UUID currentEntity, UUID targetEntity) {
         repository.changeEntity(currentEntity, targetEntity);
-    }
-
-    private Activity fetchOwner(Activity activity) {
-        var owner = userInternalApi.getInternalById(activity.owner().id());
-        return activity.withOwner(owner);
     }
 }

@@ -32,7 +32,7 @@ public record ActivityDto(
         @NotNull(message = "Entity type required")
         Integer entityType,
         @NotNull(message = "Owner required")
-        UserInternalDto owner
+        UUID owner
 ) {
     @Mapper
     public interface ActivityDtoMapper extends DtoMapper<Activity, ActivityDto> {

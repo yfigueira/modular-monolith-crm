@@ -4,11 +4,9 @@ import org.example.activitymodule.activity.domain.Activity;
 import org.example.activitymodule.activity.domain.ActivityStatus;
 import org.example.activitymodule.activity.domain.ActivityType;
 import org.example.activitymodule.activity.domain.EntityType;
-import org.example.usermodule.UserInternalDto;
 import org.mapstruct.*;
 
 import java.util.Arrays;
-import java.util.UUID;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 interface ActivityMapper {
@@ -53,13 +51,5 @@ interface ActivityMapper {
 
     default Integer mapEntityType(EntityType domain) {
         return domain.getCode();
-    }
-
-    default UserInternalDto mapOwner(UUID entity) {
-        return UserInternalDto.builder().id(entity).build();
-    }
-
-    default UUID mapOwner(UserInternalDto domain) {
-        return domain.id();
     }
 }

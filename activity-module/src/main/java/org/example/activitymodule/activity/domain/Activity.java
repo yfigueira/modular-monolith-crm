@@ -18,7 +18,7 @@ public record Activity(
         ActivityStatus status,
         UUID entity,
         EntityType entityType,
-        @With UserInternalDto owner,
+        UUID owner,
         LocalDateTime createdAt,
         LocalDateTime updatedAt
 ) {

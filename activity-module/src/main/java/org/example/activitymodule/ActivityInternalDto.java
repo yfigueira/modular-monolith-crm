@@ -17,7 +17,7 @@ public record ActivityInternalDto(
         UUID id,
         String subject,
         String description,
-        ActivityType type,
+        Integer type,
         @With LocalDateTime scheduledAt
 ) {
     @Mapper
