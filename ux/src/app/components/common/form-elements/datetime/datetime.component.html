@@ -1,0 +1,11 @@
+<label [for]="id()">{{ label() }}</label>
+<br>
+<input
+  #datetimeElement
+  type="datetime-local"
+  class="app-datetime"
+  [id]="id()"
+  [name]="id()"
+  [value]="value()"
+  (change)="selectDatetime(datetimeElement.value)"
+/>
