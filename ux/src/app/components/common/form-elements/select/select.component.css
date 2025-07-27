@@ -1,0 +1,23 @@
+.app-select {
+  border: 1px solid var(--neutral-dark-gray);
+  border-radius: 4px;
+  color: var(--neutral-graphite);
+  outline: none;
+  font-size: medium;
+  padding: 2px;
+  height: 30px;
+  width: 280px;
+}
+
+.app-select:focus {
+  color: var(--primary-navy);
+  border-color: var(--primary-navy);
+}
+
+.app-select > option:hover {
+  background-color: var(--primary-navy);
+}
+
+label {
+  font-size: small;
+}
