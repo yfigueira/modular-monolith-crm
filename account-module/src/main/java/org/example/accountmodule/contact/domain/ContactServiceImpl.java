@@ -2,7 +2,6 @@ package org.example.accountmodule.contact.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.example.accountmodule.exception.AccountException;
-import org.example.accountmodule.jobtitle.domain.JobTitleService;
 import org.example.activitymodule.ActivityInternalApi;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +14,6 @@ class ContactServiceImpl implements ContactService {
 
     private final ContactRepository repository;
     private final ActivityInternalApi activityInternalApi;
-    private final JobTitleService jobTitleService;
 
     @Override
     public Contact create(Contact contact) {
@@ -29,7 +27,6 @@ class ContactServiceImpl implements ContactService {
     public Contact getById(UUID id) {
         return repository.findById(id)
                 .map(this::fetchActivities)
-                .map(this::fetchJobTitle)
                 .orElseThrow(() -> AccountException.notFound(Contact.class, id));
     }
 
@@ -54,13 +51,5 @@ class ContactServiceImpl implements ContactService {
     private Contact fetchActivities(Contact contact) {
         var activities = activityInternalApi.getByEntity(contact.id());
         return contact.withActivities(activities);
-    }
-
-    private Contact fetchJobTitle(Contact contact) {
-        if (contact.jobTitle() == null) {
-            return contact;
-        }
-        var jobTitle = jobTitleService.getById(contact.jobTitle().id());
-        return contact.withJobTitle(jobTitle);
     }
 }

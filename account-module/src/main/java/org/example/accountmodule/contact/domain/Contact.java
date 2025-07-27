@@ -3,7 +3,6 @@ package org.example.accountmodule.contact.domain;
 import lombok.Builder;
 import lombok.With;
 import org.example.accountmodule.account.domain.Account;
-import org.example.accountmodule.jobtitle.domain.JobTitle;
 import org.example.activitymodule.ActivityInternalDto;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public record Contact(
         String email,
         ContactPriority priority,
         @With Account company,
-        @With JobTitle jobTitle,
+        UUID jobTitle,
         String phoneNumber,
         String privateEmail,
         String privatePhoneNumber,

@@ -32,14 +32,6 @@ interface ContactMapper {
         return domain.getCode();
     }
 
-    default JobTitle mapJobTitle(UUID entity) {
-        return entity == null ? null : JobTitle.builder().id(entity).build();
-    }
-
-    default UUID mapJobTitle(JobTitle domain) {
-        return domain == null ? null : domain.id();
-    }
-
     default Account mapAccount(UUID entity) {
         return entity == null ? null : Account.builder().id(entity).build();
     }

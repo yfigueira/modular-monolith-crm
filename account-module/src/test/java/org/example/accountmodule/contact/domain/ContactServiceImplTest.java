@@ -1,8 +1,6 @@
 package org.example.accountmodule.contact.domain;
 
 import org.example.accountmodule.exception.AccountException;
-import org.example.accountmodule.jobtitle.domain.JobTitle;
-import org.example.accountmodule.jobtitle.domain.JobTitleService;
 import org.example.activitymodule.ActivityInternalApi;
 import org.example.activitymodule.ActivityInternalDto;
 import org.junit.jupiter.api.Test;
@@ -29,9 +27,6 @@ class ContactServiceImplTest {
 
     @Mock
     ActivityInternalApi activityInternalApi;
-
-    @Mock
-    JobTitleService jobTitleService;
 
     @InjectMocks
     ContactServiceImpl SUT;
@@ -85,39 +80,28 @@ class ContactServiceImplTest {
     }
 
     @Test
-    void whenFound_ShouldReturnContactWithActivitiesAndJobTitle() {
+    void whenFound_ShouldReturnContactWithActivities() {
         // given
         var activities = List.of(
                 ActivityInternalDto.builder().subject("Activity 1").build(),
                 ActivityInternalDto.builder().subject("Activity 2").build()
         );
-
-        var jobTitleId = UUID.randomUUID();
-        var jobTitle = JobTitle.builder()
-                .id(jobTitleId)
-                .name("Job title")
-                .build();
-
         var contactId = UUID.randomUUID();
         var contact = Contact.builder()
                 .id(contactId)
                 .firstName("John")
                 .lastName("Smith")
                 .email("test@email.com")
-                .jobTitle(JobTitle.builder().id(jobTitleId).build())
+                .jobTitle(UUID.randomUUID())
                 .build();
 
         Mockito.when(activityInternalApi.getByEntity(contactId)).thenReturn(activities);
-        Mockito.when(jobTitleService.getById(jobTitleId)).thenReturn(jobTitle);
         Mockito.when(repository.findById(contactId)).thenReturn(Optional.of(contact));
 
         // when
         var result = SUT.getById(contactId);
 
         // then
-        assertThat(result,
-                is(equalTo(contact
-                        .withActivities(activities)
-                        .withJobTitle(jobTitle))));
+        assertThat(result, is(equalTo(contact.withActivities(activities))));
     }
 }
