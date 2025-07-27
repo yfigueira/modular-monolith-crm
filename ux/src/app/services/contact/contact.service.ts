@@ -18,4 +18,12 @@ export class ContactService {
   get(id: string): Observable<Contact> {
     return this.httpClient.get<Contact>(`${this.CONTACTS_API}/${id}`);
   }
+
+  update(contact: Contact): Observable<Contact> {
+    return this.httpClient.put<Contact>(`${this.CONTACTS_API}/${contact.id}`, contact);
+  }
+
+  delete(id: string): Observable<void> {
+    return this.httpClient.delete<void>(`${this.CONTACTS_API}/${id}`);
+  }
 }

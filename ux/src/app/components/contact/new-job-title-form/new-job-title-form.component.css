@@ -1,0 +1,22 @@
+.new-contact-job-title-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  border: 1px solid var(--neutral-graphite);
+  border-radius: 10px;
+  background-color: var(--neutral-white);
+  height: auto;
+  width: 500px;
+  padding: 20px
+}
+
+.new-contact-job-title-form-container > span {
+  color: var(--neutral-dark-gray);
+}
+
+.new-contact-job-title-form-container > span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

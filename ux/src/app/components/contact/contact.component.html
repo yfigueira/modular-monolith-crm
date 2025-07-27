@@ -2,3 +2,82 @@
   <fa-icon [icon]="faAngleLeft" />
   <span>Return</span>
 </div>
+<div class="contact-details-container">
+  <div class="contact-management-actions-container">
+    <app-button name="save-contact"
+                text="Save"
+                [icon]="faFloppyDisk"
+                [style]="ButtonStyle.INFO"
+                (clickEvent)="updateContact()" />
+    <app-button name="remove-contact"
+                text="Remove"
+                [icon]="faTrashCan"
+                [style]="ButtonStyle.DANGER"
+                (clickEvent)="deleteContact()" />
+  </div>
+  <div class="contact-form-container">
+    <div>
+      <app-input id="first-name"
+                 label="First name"
+                 [(value)]="contact.firstName" />
+      <app-input id="last-name"
+                 label="Last name"
+                 [(value)]="contact.lastName" />
+      <app-input id="email"
+                 label="Email"
+                 [(value)]="contact.email" />
+      <app-input id="phone-number"
+                 label="Phone number"
+                 [(value)]="contact.phoneNumber" />
+    </div>
+    <div>
+      <div>
+        <app-select id="accounts"
+                    label="Company"
+                    [options]="getAccountsOptions()"
+                    [(value)]="contact.company" />
+        <p (click)="goToAccounts()">Create account</p>
+      </div>
+      <div>
+        <app-select id="job-titles"
+                    label="Job title"
+                    [options]="getJobTitlesOptions()"
+                    [(value)]="contact.jobTitle" />
+        <p (click)="openNewJobTitleModal()">Create job title</p>
+      </div>
+      <app-select id="contact-priorities"
+                  label="Priority"
+                  [options]="getContactPrioritiesOptions()"
+                  [(value)]="contact.priority" />
+    </div>
+    <div>
+      <app-input id="private-email"
+                 label="Private email"
+                 [(value)]="contact.privateEmail" />
+      <app-input id="private-phone-number"
+                 label="Private phone number"
+                 [(value)]="contact.privatePhoneNumber" />
+    </div>
+  </div>
+  <hr>
+  <div class="contact-activities-container">
+    <div style="display: flex; justify-content: space-between;">
+      <h2 style="color: var(--neutral-graphite)">Activities</h2>
+      <app-button
+        name="plan-activity"
+        text="Plan activity"
+        [icon]="faUserPlus"
+        [style]="ButtonStyle.INFO" />
+    </div>
+    <div>
+      @for (activity of contact.activities; track activity.id) {
+        <div style="width: 100%; height: 30px; border: 1px solid var(--neutral-light-gray); box-shadow: 1px 5px var(--neutral-dark-gray)">
+          <span>{{ activity.type }}</span>
+          <span>{{ activity.subject }}</span>
+          <span>{{ activity.description }}</span>
+          <span>{{ activity.scheduledAt }}</span>
+        </div>
+      }
+    </div>
+  </div>
+</div>

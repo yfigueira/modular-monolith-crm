@@ -1,3 +1,5 @@
+import {ActivitySummary} from '../activity/activity-summary';
+
 export type Contact = {
   id?: string,
   firstName: string,
@@ -5,9 +7,9 @@ export type Contact = {
   email: string,
   priority?: number,
   company?: string,
-  jobTitle?: Object,
+  jobTitle?: string,
   phoneNumber?: string,
   privateEmail?: string,
   privatePhoneNumber?: string,
-  activities?: Object[]
+  activities?: ActivitySummary[]
 }
