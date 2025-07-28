@@ -82,6 +82,6 @@
   gap: 10px;
 }
 
-.contact-activities-container > div {
+.contact-activities-container > app-activities {
   width: 98%;
 }

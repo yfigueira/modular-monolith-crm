@@ -1,0 +1,23 @@
+<div class="activities-display-container">
+  <div class="activities-header-container">
+    <h2>Activities</h2>
+    <app-button
+      name="plan-activity"
+      text="Plan activity"
+      [icon]="faUserPlus"
+      [style]="ButtonStyle.INFO"
+      (clickEvent)="openNewActivityModal()" />
+  </div>
+  @for (activity of activities(); track activity.id) {
+    <div class="activity-item-container" [routerLink]="['/activities', activity.id]">
+      <span>
+        <fa-icon [icon]="getActivityType(activity.type)?.icon!" size="lg" />
+        &nbsp;
+        {{ getActivityType(activity.type)?.label }}
+      </span>
+      <span>{{ activity.subject }}</span>
+      <span>{{ activity.description }}</span>
+      <span>{{ activity.scheduledAt | date:'dd MMMM yyyy, HH:mm' }}</span>
+    </div>
+  }
+</div>

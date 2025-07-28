@@ -15,6 +15,7 @@ import {ContactJobTitleService} from '../../services/contact/jobtitle/contact-jo
 import {ContactPriority} from '../../models/contact/contact-priority';
 import {Dialog} from '@angular/cdk/dialog';
 import {NewJobTitleFormComponent} from './new-job-title-form/new-job-title-form.component';
+import {ActivitiesComponent} from '../activities/activities.component';
 
 @Component({
   selector: 'app-contact',
@@ -22,7 +23,8 @@ import {NewJobTitleFormComponent} from './new-job-title-form/new-job-title-form.
     FaIconComponent,
     ButtonComponent,
     InputComponent,
-    SelectComponent
+    SelectComponent,
+    ActivitiesComponent
   ],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'

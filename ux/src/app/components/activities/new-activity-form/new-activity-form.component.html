@@ -1,0 +1,30 @@
+<div class="new-activity-form-container">
+  <h3>New activity</h3>
+  <app-input id="new-activity-subject"
+             label="Subject"
+             [required]="true"
+             [(value)]="newActivity.subject"/>
+  <app-input id="new-activity-description"
+             label="Description"
+             [(value)]="newActivity.description"/>
+  <app-datetime id="new-activity-scheduled-at"
+                label="Scheduled at"
+                [(value)]="newActivity.scheduledAt"/>
+  <app-select id="new-activity-type"
+              label="Activity type"
+              [options]="getActivityTypesOptions()"
+              [(value)]="newActivity.type"/>
+  <app-select id="new-activity-status"
+              label="Activity status"
+              [options]="getActivityStatusesOptions()"
+              [(value)]="newActivity.status"/>
+  <app-select id="new-activity-owner"
+              label="Owner"
+              [options]="getUsersOptions()"
+              [(value)]="newActivity.owner"/>
+  <app-button name="create-new-activity"
+              text="Create activity"
+              [style]="ButtonStyle.SUCCESS"
+              (clickEvent)="handleCreateActivity()"/>
+  <span (click)="handleClose()">close</span>
+</div>

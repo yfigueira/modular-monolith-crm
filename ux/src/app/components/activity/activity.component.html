@@ -1,0 +1,50 @@
+<div class="app-activity-return-container" (click)="goBack()">
+  <fa-icon [icon]="faAngleLeft" />
+  <span>Return</span>
+</div>
+<div class="activity-details-container">
+  <div class="activity-management-actions-container">
+    <app-button name="save-contact"
+                text="Save"
+                [icon]="faFloppyDisk"
+                [style]="ButtonStyle.INFO"
+                (clickEvent)="updateActivity()" />
+    <app-button name="remove-contact"
+                text="Remove"
+                [icon]="faTrashCan"
+                [style]="ButtonStyle.DANGER"
+                (clickEvent)="deleteActivity()" />
+  </div>
+  <div class="activity-form-container">
+    <div>
+      <app-input id="subject"
+                 label="Subject"
+                 [(value)]="activity.subject" />
+      <app-input id="description"
+                 label="Description"
+                 [(value)]="activity.description" />
+    </div>
+    <div>
+      <app-select id="activity-type"
+                  label="Activity type"
+                  [options]="getActivityTypesOptions()"
+                  [(value)]="activity.type"/>
+      <app-select id="activity-status"
+                  label="Activity status"
+                  [options]="getActivityStatusesOptions()"
+                  [(value)]="activity.status"/>
+      <app-select id="activity-owner"
+                  label="Owner"
+                  [options]="getUsersOptions()"
+                  [(value)]="activity.owner"/>
+    </div>
+    <div>
+      <app-datetime id="scheduled-at"
+                    label="Scheduled at"
+                    [(value)]="activity.scheduledAt"/>
+      <app-datetime id="completed-at"
+                    label="Completed at"
+                    [(value)]="activity.completedAt"/>
+    </div>
+  </div>
+</div>

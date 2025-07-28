@@ -1,0 +1,49 @@
+.app-activity-return-container {
+  width: 120px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  font-size: large;
+  color: var(--neutral-dark-gray);
+}
+
+.app-activity-return-container:hover {
+  cursor: pointer;
+  color: var(--primary-amber);
+}
+
+.activity-details-container {
+  height: auto;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.activity-management-actions-container {
+  --padding-value: 20px;
+  height: 60px;
+  width: calc(100% - 2 * var(--padding-value));
+  padding: var(--padding-value);
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 20px;
+}
+
+.activity-form-container {
+  height: auto;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 33.3% 33.3% auto;
+}
+
+.activity-form-container > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+

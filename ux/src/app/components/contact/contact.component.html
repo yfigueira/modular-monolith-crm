@@ -61,23 +61,6 @@
   </div>
   <hr>
   <div class="contact-activities-container">
-    <div style="display: flex; justify-content: space-between;">
-      <h2 style="color: var(--neutral-graphite)">Activities</h2>
-      <app-button
-        name="plan-activity"
-        text="Plan activity"
-        [icon]="faUserPlus"
-        [style]="ButtonStyle.INFO" />
-    </div>
-    <div>
-      @for (activity of contact.activities; track activity.id) {
-        <div style="width: 100%; height: 30px; border: 1px solid var(--neutral-light-gray); box-shadow: 1px 5px var(--neutral-dark-gray)">
-          <span>{{ activity.type }}</span>
-          <span>{{ activity.subject }}</span>
-          <span>{{ activity.description }}</span>
-          <span>{{ activity.scheduledAt }}</span>
-        </div>
-      }
-    </div>
+    <app-activities [activities]="contact.activities" [parent]="contact.id" />
   </div>
 </div>
