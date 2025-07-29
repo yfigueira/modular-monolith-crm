@@ -6,11 +6,8 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 import org.example.activitymodule.ActivityInternalDto;
 import org.example.leadmodule.common.DtoMapper;
-import org.example.leadmodule.company.web.CompanyDto;
-import org.example.leadmodule.jobtitle.web.JobTitleDto;
 import org.example.leadmodule.lead.domain.Lead;
 import org.example.leadmodule.lead.domain.LeadState;
-import org.example.usermodule.UserInternalDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -35,9 +32,9 @@ public record LeadDto(
         Integer state,
         Boolean isActive,
         @NotNull(message = "Owner required")
-        UserInternalDto owner,
-        JobTitleDto jobTitle,
-        CompanyDto company,
+        UUID owner,
+        UUID jobTitle,
+        UUID company,
         List<ActivityInternalDto> activities
 ) {
     @Mapper

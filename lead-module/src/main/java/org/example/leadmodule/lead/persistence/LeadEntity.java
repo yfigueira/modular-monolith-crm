@@ -39,6 +39,9 @@ public class LeadEntity {
     @Column(name = "phone_number")
     private String phoneNumber;
 
+    @Column(name = "subject")
+    private String subject;
+
     @Column(name = "city")
     private String city;
 

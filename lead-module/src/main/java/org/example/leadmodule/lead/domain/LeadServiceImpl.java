@@ -2,16 +2,12 @@ package org.example.leadmodule.lead.domain;
 
 import lombok.RequiredArgsConstructor;
 import org.example.activitymodule.ActivityInternalApi;
-import org.example.leadmodule.company.domain.CompanyService;
 import org.example.leadmodule.event.LeadEventPublisher;
 import org.example.leadmodule.exception.LeadException;
-import org.example.leadmodule.jobtitle.domain.LeadJobTitleService;
-import org.example.usermodule.UserInternalApi;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -19,9 +15,6 @@ import java.util.UUID;
 class LeadServiceImpl implements LeadService {
 
     private final LeadRepository repository;
-    private final UserInternalApi userInternalApi;
-    private final CompanyService companyService;
-    private final LeadJobTitleService jobTitleService;
     private final ActivityInternalApi activityInternalApi;
     private final LeadEventPublisher eventPublisher;
 
@@ -36,9 +29,6 @@ class LeadServiceImpl implements LeadService {
     @Override
     public Lead getById(UUID id) {
         return repository.findById(id)
-                .map(this::fetchOwner)
-                .map(this::fetchCompany)
-                .map(this::fetchJobTitle)
                 .map(this::fetchActivities)
                 .orElseThrow(() -> LeadException.notFound(Lead.class, id));
     }
@@ -82,27 +72,6 @@ class LeadServiceImpl implements LeadService {
         if (state.equals(LeadState.QUALIFIED)) {
             eventPublisher.publishLeadQualified(updatedLead);
         }
-    }
-
-    private Lead fetchOwner(Lead lead) {
-        var owner = userInternalApi.getInternalById(lead.owner().id());
-        return lead.withOwner(owner);
-    }
-
-    private Lead fetchCompany(Lead lead) {
-        if (lead.company() == null) {
-            return lead;
-        }
-        var company = companyService.getById(lead.company().id());
-        return lead.withCompany(company);
-    }
-
-    private Lead fetchJobTitle(Lead lead) {
-        if (lead.jobTitle() == null) {
-            return lead;
-        }
-        var jobTitle = jobTitleService.getById(lead.jobTitle().id());
-        return lead.withJobTitle(jobTitle);
     }
 
     private Lead fetchActivities(Lead lead) {

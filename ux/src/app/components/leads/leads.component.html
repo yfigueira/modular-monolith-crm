@@ -1,1 +1,36 @@
-<p>leads works!</p>
+<div class="leads-display-container">
+  <div class="leads-header-container">
+    <h2>Leads</h2>
+    <app-button
+      name="create-lead"
+      text="Create lead"
+      [icon]="faUserPlus"
+      [style]="ButtonStyle.INFO"
+      (clickEvent)="openNewLeadModal()" />
+  </div>
+  <div cdkDropListGroup class="leads-kanban-board">
+    @for (state of getLeadStates(); track state.code) {
+      <div class="leads-kanban-column">
+        <h3 [style.color]="state.colorHex" >{{ state.label }}</h3>
+        <div class="state-leads-list"
+             [id]="String(state.code)"
+             cdkDropList
+             (cdkDropListDropped)="drop($event)"
+             [cdkDropListData]="dropListData[state.code]">
+          @for (lead of dropListData[state.code].leads; track lead.id) {
+            <div class="leads-kanban-item"
+                 [id]="lead.id"
+                 cdkDrag
+                 [cdkDragData]="lead" >
+              <p>{{ lead.firstName }} {{ lead.lastName }}</p>
+              <span>{{ lead.email }} - {{ lead.phoneNumber }}</span>
+              <br>
+              <p>{{ lead.subject }}</p>
+              <fa-icon [icon]="faBars" size="lg" cdkDragHandle />
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>
