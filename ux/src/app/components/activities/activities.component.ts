@@ -1,6 +1,6 @@
 import {Component, inject, input} from '@angular/core';
 import {ButtonComponent, ButtonStyle} from "../common/form-elements/button/button.component";
-import {faUserPlus} from '@fortawesome/free-solid-svg-icons';
+import {faPlus} from '@fortawesome/free-solid-svg-icons';
 import {ActivitySummary} from '../../models/activity/activity-summary';
 import {Dialog} from '@angular/cdk/dialog';
 import {NewActivityFormComponent} from './new-activity-form/new-activity-form.component';
@@ -62,6 +62,6 @@ export class ActivitiesComponent {
   }
 
   protected readonly ButtonStyle = ButtonStyle;
-  protected readonly faUserPlus = faUserPlus;
   protected readonly Object = Object;
+  protected readonly faPlus = faPlus;
 }
