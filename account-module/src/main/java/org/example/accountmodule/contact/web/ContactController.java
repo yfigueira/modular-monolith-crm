@@ -5,9 +5,11 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.accountmodule.contact.domain.ContactService;
 import org.example.accountmodule.contact.web.dto.ContactDto;
+import org.example.accountmodule.contact.web.dto.ContactSummary;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -17,6 +19,13 @@ import java.util.UUID;
 public class ContactController {
 
     private final ContactService service;
+
+    @GetMapping
+    public List<ContactSummary> getAll() {
+        return service.getAll().stream()
+                .map(ContactSummary.mapper()::toDto)
+                .toList();
+    }
 
     @GetMapping("{id}")
     public ContactDto getById(@PathVariable UUID id) {

@@ -24,6 +24,11 @@ class ContactServiceImpl implements ContactService {
     }
 
     @Override
+    public List<Contact> getAll() {
+        return repository.findAll();
+    }
+
+    @Override
     public Contact getById(UUID id) {
         return repository.findById(id)
                 .map(this::fetchActivities)

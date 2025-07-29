@@ -8,6 +8,8 @@ public interface ContactRepository {
 
     Contact create(Contact contact);
 
+    List<Contact> findAll();
+
     Optional<Contact> findById(UUID id);
 
     Contact update(UUID id, Contact contact);

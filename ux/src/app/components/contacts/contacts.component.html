@@ -1,1 +1,33 @@
-<p>contacts works!</p>
+<div class="contacts-display-container">
+  <div class="contacts-header-container">
+    <h2 style="color: var(--neutral-graphite)">Contacts</h2>
+  </div>
+  <div class="contacts-list-container">
+    @if (contacts.length != 0) {
+      <table>
+        <thead>
+        <tr>
+          <th>id</th>
+          <th>name</th>
+          <th>email</th>
+          <th>phone number</th>
+          <th><fa-icon [icon]="faEllipsisVertical" /></th>
+        </tr>
+        </thead>
+        <tbody>
+          @for (contact of contacts; track contact.id) {
+            <tr>
+              <td style="max-width: 250px">{{ contact.id }}</td>
+              <td>{{ contact.firstName + ' ' + contact.lastName }}</td>
+              <td>{{ contact.email }}</td>
+              <td>{{ contact.phoneNumber }}</td>
+              <td style="width: 40px; max-width: 40px; text-align: center"><fa-icon [icon]="faPenToSquare" [routerLink]="['/contacts', contact.id]" /></td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    } @else {
+      <fa-icon [icon]="faEllipsis" size="2xl" style="color: var(--neutral-dark-gray); opacity: 0.5" />
+    }
+  </div>
+</div>

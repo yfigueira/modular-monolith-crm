@@ -25,6 +25,13 @@ class ContactDatabaseRepository implements ContactRepository {
     }
 
     @Override
+    public List<Contact> findAll() {
+        return jpaRepository.findAll().stream()
+                .map(mapper::toDomain)
+                .toList();
+    }
+
+    @Override
     public Optional<Contact> findById(UUID id) {
         return jpaRepository.findById(id)
                 .map(mapper::toDomain);

@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Contact} from '../../models/contact/contact';
 import {API_URL} from '../../../constants';
+import {ContactSummary} from '../../models/contact/contact-summary';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,10 @@ export class ContactService {
   constructor(
     private httpClient: HttpClient
   ) { }
+
+  getAll(): Observable<ContactSummary[]> {
+    return this.httpClient.get<ContactSummary[]>(`${this.CONTACTS_API}`);
+  }
 
   get(id: string): Observable<Contact> {
     return this.httpClient.get<Contact>(`${this.CONTACTS_API}/${id}`);
