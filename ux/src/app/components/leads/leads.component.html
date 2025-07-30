@@ -21,6 +21,7 @@
             <div class="leads-kanban-item"
                  [id]="lead.id"
                  cdkDrag
+                 [cdkDragDisabled]="!lead.isActive"
                  [cdkDragData]="lead" >
               <p>{{ lead.firstName }} {{ lead.lastName }}</p>
               <span>{{ lead.email }} - {{ lead.phoneNumber }}</span>

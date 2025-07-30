@@ -5,5 +5,6 @@ export type LeadSummary = {
   email: string,
   phoneNumber?: string,
   subject: string,
-  state: number
+  state: number,
+  isActive: boolean
 }

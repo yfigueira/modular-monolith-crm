@@ -50,7 +50,7 @@ class LeadServiceImplTest {
     }
 
     @Test
-    void whenNotEmailAlreadyExists_ShouldReturnCreatedLead() {
+    void whenNotEmailAlreadyExists_ShouldReturnCreatedLeadWithStateNewAndIsActiveTrue() {
         // given
         var newLead = Lead.builder()
                 .email("valid@email.com")
@@ -59,10 +59,12 @@ class LeadServiceImplTest {
         var createdLead = Lead.builder()
                 .id(UUID.randomUUID())
                 .email("valid@email.com")
+                .state(LeadState.NEW)
+                .isActive(true)
                 .build();
 
         Mockito.when(repository.existsByEmail(newLead.email())).thenReturn(false);
-        Mockito.when(repository.create(newLead)).thenReturn(createdLead);
+        Mockito.when(repository.create(newLead.withIsActive(true).withState(LeadState.NEW))).thenReturn(createdLead);
 
         // when
         var result = SUT.create(newLead);

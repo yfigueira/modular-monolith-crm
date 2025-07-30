@@ -23,7 +23,12 @@ class LeadServiceImpl implements LeadService {
         if (repository.existsByEmail(lead.email())) {
             throw LeadException.alreadyExists(Lead.class, lead.email());
         }
-        return repository.create(lead);
+
+        var leadWithDefaults = lead
+                .withState(LeadState.NEW)
+                .withIsActive(true);
+
+        return repository.create(leadWithDefaults);
     }
 
     @Override

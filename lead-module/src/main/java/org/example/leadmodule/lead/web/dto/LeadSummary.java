@@ -18,7 +18,8 @@ public record LeadSummary(
         String email,
         String phoneNumber,
         String subject,
-        Integer state
+        Integer state,
+        Boolean isActive
 ) {
     @Mapper
     public interface LeadSummaryMapper extends DtoMapper<Lead, LeadSummary> {
