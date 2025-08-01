@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ButtonComponent, ButtonStyle} from "../common/form-elements/button/button.component";
 import {faBars, faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import {
@@ -13,6 +13,9 @@ import {LeadState} from '../../models/lead/lead-state';
 import {LeadSummary} from '../../models/lead/lead-summary';
 import {LeadService} from '../../services/lead/lead.service';
 import {FaIconComponent} from '@fortawesome/angular-fontawesome';
+import {Dialog} from '@angular/cdk/dialog';
+import {NewLeadFormComponent} from './new-lead-form/new-lead-form.component';
+import {Lead} from '../../models/lead/lead';
 
 @Component({
   selector: 'app-leads',
@@ -29,6 +32,8 @@ import {FaIconComponent} from '@fortawesome/angular-fontawesome';
 })
 export class LeadsComponent {
 
+  private dialog = inject(Dialog);
+
   dropListData: {[stateCode: number]: DropListProperties} = {
     [LeadState.NEW.code]: {state: LeadState.NEW, leads: []},
     [LeadState.CONTACT_ATTEMPT.code]: {state: LeadState.CONTACT_ATTEMPT, leads: []},
@@ -36,7 +41,6 @@ export class LeadsComponent {
     [LeadState.DISQUALIFIED.code]: {state: LeadState.DISQUALIFIED, leads: []},
     [LeadState.QUALIFIED.code]: {state: LeadState.QUALIFIED, leads: []}
   }
-
 
   constructor(
     private service: LeadService
@@ -72,11 +76,24 @@ export class LeadsComponent {
   }
 
   openNewLeadModal(): void {
-
+    const dialogRef = this.dialog.open(
+      NewLeadFormComponent,
+      { disableClose: true }
+    );
+    dialogRef.closed.subscribe(result => {
+      if (result) {
+        this.createLead(result as Lead);
+      }
+    })
   }
 
   getLeadStates() {
     return Object.values(LeadState);
+  }
+
+  private createLead(lead: Lead): void {
+    this.service.create(lead).subscribe(data =>
+      this.dropListData[lead.state].leads.push(lead as LeadSummary))
   }
 
   protected readonly ButtonStyle = ButtonStyle;

@@ -1,0 +1,31 @@
+<div class="new-lead-form-container">
+  <h3>New lead</h3>
+  <app-input id="new-lead-firstname"
+             label="First name"
+             [required]="true"
+             [(value)]="newLead.firstName" />
+  <app-input id="new-lead-lastname"
+             label="Last name"
+             [required]="true"
+             [(value)]="newLead.lastName" />
+  <app-input id="new-lead-email"
+             label="Email"
+             [required]="true"
+             [(value)]="newLead.email" />
+  <app-input id="new-lead-phone-number"
+             label="Phone number"
+             [(value)]="newLead.phoneNumber" />
+  <app-input id="new-lead-subject"
+             label="Subject"
+             [required]="true"
+             [(value)]="newLead.subject" />
+  <app-select id="new-lead-owner"
+              label="Owner"
+              [options]="getUsersOptions()"
+              [(value)]="newLead.owner"/>
+  <app-button name="create-new-lead"
+              text="Create lead"
+              [style]="ButtonStyle.SUCCESS"
+              (clickEvent)="handleCreateLead()"/>
+  <span (click)="handleClose()">close</span>
+</div>
