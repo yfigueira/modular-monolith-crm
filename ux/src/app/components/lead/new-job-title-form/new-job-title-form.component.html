@@ -1,0 +1,8 @@
+<div class="new-lead-job-title-form-container">
+  <app-input id="new-job-title-name"
+             label="Job title"
+             [required]="true"
+             [(value)]="newJobTitle.name"/>
+  <app-button name="create-new-contact-job-title" text="Create job title" [style]="ButtonStyle.SUCCESS" (clickEvent)="handleCreateJobTitle()" />
+  <span (click)="handleClose()">close</span>
+</div>

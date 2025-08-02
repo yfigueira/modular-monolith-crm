@@ -5,6 +5,7 @@ import {AccountsComponent} from './components/accounts/accounts.component';
 import {ContactsComponent} from './components/contacts/contacts.component';
 import {ContactComponent} from './components/contact/contact.component';
 import {ActivityComponent} from './components/activity/activity.component';
+import {LeadComponent} from './components/lead/lead.component';
 
 export const routes: Routes = [
   {
@@ -14,6 +15,10 @@ export const routes: Routes = [
   {
     path: 'leads',
     component: LeadsComponent
+  },
+  {
+    path: 'leads/:id',
+    component: LeadComponent
   },
   {
     path: 'accounts',

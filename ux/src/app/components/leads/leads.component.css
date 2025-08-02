@@ -60,6 +60,10 @@
   padding-top: 5px;
 }
 
+.leads-kanban-item:hover {
+  cursor: pointer;
+}
+
 .leads-kanban-item > span {
   font-size: x-small;
 }

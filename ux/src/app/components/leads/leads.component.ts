@@ -16,6 +16,7 @@ import {FaIconComponent} from '@fortawesome/angular-fontawesome';
 import {Dialog} from '@angular/cdk/dialog';
 import {NewLeadFormComponent} from './new-lead-form/new-lead-form.component';
 import {Lead} from '../../models/lead/lead';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-leads',
@@ -25,7 +26,8 @@ import {Lead} from '../../models/lead/lead';
     CdkDropList,
     CdkDrag,
     FaIconComponent,
-    CdkDragHandle
+    CdkDragHandle,
+    RouterLink
   ],
   templateUrl: './leads.component.html',
   styleUrl: './leads.component.css'

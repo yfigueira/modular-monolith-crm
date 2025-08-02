@@ -1,0 +1,8 @@
+<div class="new-company-form-container">
+  <app-input id="new-company-name"
+             label="Company"
+             [required]="true"
+             [(value)]="newCompany.name"/>
+  <app-button name="create-new-company-title" text="Create company" [style]="ButtonStyle.SUCCESS" (clickEvent)="handleCreateCompany()" />
+  <span (click)="handleClose()">close</span>
+</div>

@@ -20,6 +20,7 @@
           @for (lead of dropListData[state.code].leads; track lead.id) {
             <div class="leads-kanban-item"
                  [id]="lead.id"
+                 [routerLink]="['/leads/', lead.id]"
                  cdkDrag
                  [cdkDragDisabled]="!lead.isActive"
                  [cdkDragData]="lead" >

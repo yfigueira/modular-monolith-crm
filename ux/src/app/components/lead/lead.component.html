@@ -1,0 +1,67 @@
+<div class="app-lead-return-container" (click)="goBack()">
+  <fa-icon [icon]="faAngleLeft" />
+  <span>Return</span>
+</div>
+<div class="lead-details-container">
+  <div class="lead-management-actions-container">
+    <app-button name="save-lead"
+                text="Save"
+                [icon]="faFloppyDisk"
+                [style]="ButtonStyle.INFO"
+                (clickEvent)="updateLead()" />
+    <app-button name="remove-lead"
+                text="Remove"
+                [icon]="faTrashCan"
+                [style]="ButtonStyle.DANGER"
+                (clickEvent)="deleteLead()" />
+  </div>
+  <div class="lead-form-container">
+    <div>
+      <app-input id="first-name"
+                 label="First name"
+                 [(value)]="lead.firstName" />
+      <app-input id="last-name"
+                 label="Last name"
+                 [(value)]="lead.lastName" />
+      <app-input id="email"
+                 label="Email"
+                 [(value)]="lead.email" />
+      <app-input id="phone-number"
+                 label="Phone number"
+                 [(value)]="lead.phoneNumber" />
+    </div>
+    <div>
+      <app-input id="subject"
+                 label="Subject"
+                 [(value)]="lead.subject" />
+      <app-select id="activity-owner"
+                  label="Owner"
+                  [options]="getUsersOptions()"
+                  [(value)]="lead.owner"/>
+    </div>
+    <div>
+      <app-input id="city"
+                 label="City"
+                 [(value)]="lead.city" />
+      <div>
+        <app-select id="accounts"
+                    label="Company"
+                    [options]="getCompaniesOptions()"
+                    [(value)]="lead.company" />
+        <p (click)="openNewCompanyModal()">Create company</p>
+      </div>
+      <div>
+        <app-select id="job-titles"
+                    label="Job title"
+                    [options]="getJobTitlesOptions()"
+                    [(value)]="lead.jobTitle" />
+        <p (click)="openNewJobTitleModal()">Create job title</p>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="lead-activities-container">
+    <app-activities [activities]="lead.activities" [parent]="lead.id" />
+  </div>
+</div>
+
