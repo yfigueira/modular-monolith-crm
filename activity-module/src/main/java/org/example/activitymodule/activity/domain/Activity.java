@@ -2,7 +2,6 @@ package org.example.activitymodule.activity.domain;
 
 import  lombok.Builder;
 import lombok.With;
-import org.example.usermodule.UserInternalDto;
 
 import java.time.LocalDateTime;
 import java.util.UUID;

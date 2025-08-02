@@ -8,7 +8,6 @@ import org.example.activitymodule.activity.domain.ActivityStatus;
 import org.example.activitymodule.activity.domain.ActivityType;
 import org.example.activitymodule.activity.domain.EntityType;
 import org.example.activitymodule.common.web.DtoMapper;
-import org.example.usermodule.UserInternalDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 

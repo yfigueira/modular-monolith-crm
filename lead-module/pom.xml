@@ -28,7 +28,6 @@
     </scm>
 
     <properties>
-        <user-module.version>0.0.1-SNAPSHOT</user-module.version>
         <activity-module.version>0.0.1-SNAPSHOT</activity-module.version>
         <event-bus.version>0.0.1-SNAPSHOT</event-bus.version>
     </properties>
@@ -38,11 +37,6 @@
             <groupId>org.example</groupId>
             <artifactId>event-bus</artifactId>
             <version>${event-bus.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>user-module</artifactId>
-            <version>${user-module.version}</version>
         </dependency>
         <dependency>
             <groupId>org.example</groupId>
