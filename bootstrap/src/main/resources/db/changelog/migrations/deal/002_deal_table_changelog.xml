@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="yfp">
+        <createTable tableName="deal" schemaName="deal">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="title" type="varchar(250)">
+                <constraints nullable="false" />
+            </column>
+            <column name="stage" type="smallint">
+                <constraints nullable="false" />
+            </column>
+            <column name="expected_revenue" type="varchar" />
+            <column name="expected_close_date" type="timestamp" />
+            <column name="contact" type="uuid" />
+            <column name="owner" type="uuid" />
+            <column name="version" type="bigint" />
+            <column name="created_at" type="timestamp" />
+            <column name="updated_at" type="timestamp" />
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="yfp">
+        <createProcedure schemaName="deal">
+            CREATE TRIGGER tr_update_deal_audit_columns
+                BEFORE INSERT OR UPDATE ON deal.deal
+                    FOR EACH ROW EXECUTE FUNCTION common.update_audit_columns()
+        </createProcedure>
+    </changeSet>
+</databaseChangeLog>

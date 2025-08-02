@@ -11,3 +11,6 @@ databaseChangeLog:
   - includeAll:
       path: "migrations/lead"
       relativeToChangelogFile: true
+  - includeAll:
+      path: "migrations/deal"
+      relativeToChangelogFile: true

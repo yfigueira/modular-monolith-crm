@@ -23,6 +23,7 @@
         <module>activity-module</module>
         <module>account-module</module>
         <module>lead-module</module>
+        <module>deal-module</module>
     </modules>
 
     <url/>
