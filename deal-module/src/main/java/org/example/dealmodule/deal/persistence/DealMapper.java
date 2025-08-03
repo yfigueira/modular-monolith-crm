@@ -8,7 +8,7 @@ import org.mapstruct.MappingConstants;
 import java.util.Arrays;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
-public interface DealMapper {
+interface DealMapper {
 
     Deal toDomain(DealEntity entity);
 

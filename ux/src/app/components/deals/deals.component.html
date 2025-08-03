@@ -1,1 +1,37 @@
-<p>deals works!</p>
+<div class="deals-display-container">
+  <div class="deals-header-container">
+    <h2>Deals</h2>
+    <app-button
+      name="create-deal"
+      text="Create deal"
+      [icon]="faHandshake"
+      [style]="ButtonStyle.INFO"
+      (clickEvent)="openNewDealModal()" />
+  </div>
+  <div cdkDropListGroup class="deals-kanban-board">
+    @for (stage of getDealStages(); track stage.code) {
+      <div class="deals-kanban-column">
+        <h3 [style.color]="stage.colorHex">{{ stage.label }}</h3>
+        <div class="stage-deals-list"
+             [id]="String(stage.code)"
+             cdkDropList
+             (cdkDropListDropped)="drop($event)"
+             [cdkDropListData]="kanbanData[stage.code]">
+          @for (deal of kanbanData[stage.code].deals; track deal.id) {
+            <div class="deals-kanban-item"
+                 [id]="deal.id"
+                 [routerLink]="['/deals/', deal.id]"
+                 cdkDrag
+                 [cdkDragData]="deal">
+              <p>{{ deal.title }}</p>
+              <br>
+              <p>{{ deal.expectedRevenue }}</p>
+              <br>
+              <fa-icon [icon]="faBars" size="lg" cdkDragHandle />
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
+</div>

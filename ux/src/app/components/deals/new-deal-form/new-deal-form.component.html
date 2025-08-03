@@ -1,0 +1,27 @@
+<div class="new-deal-form-container">
+  <h3>New deal</h3>
+  <app-input id="new-deal-title"
+             label="Title"
+             [required]="true"
+             [(value)]="newDeal.title" />
+  <app-input id="new-deal-expected-revenue"
+             label="Expected revenue"
+             [required]="true"
+             [(value)]="newDeal.expectedRevenue" />
+  <app-datetime id="new-deal-expected-close-date"
+                label="Expected close date"
+                [(value)]="newDeal.expectedCloseDate" />
+  <app-select id="new-deal-contact"
+              label="Contact"
+              [options]="getContactsOptions()"
+              [(value)]="newDeal.contact"/>
+  <app-select id="new-deal-owner"
+              label="Owner"
+              [options]="getUsersOptions()"
+              [(value)]="newDeal.owner"/>
+  <app-button name="create-new-deal"
+              text="Create deal"
+              [style]="ButtonStyle.SUCCESS"
+              (clickEvent)="handleCreateDeal()"/>
+  <span (click)="handleClose()">close</span>
+</div>
