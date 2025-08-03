@@ -33,4 +33,28 @@ class DealServiceImplTest {
                 .isInstanceOf(DealException.ResourceNotFoundException.class)
                 .hasMessage("Deal not found :: %s".formatted(unknownId));
     }
+
+    @Test
+    void whenUpdateStageIsUnknownStage_ShouldThrowDealExceptionActionNotAllowed() {
+        // given
+        var unknownStageCode = -1;
+        var dealId = UUID.randomUUID();
+
+        // when, then
+        assertThatThrownBy(() -> SUT.updateStage(dealId, unknownStageCode))
+                .isInstanceOf(DealException.ActionNotAllowedException.class)
+                .hasMessage("Action on DealStage not allowed :: invalid stage code");
+    }
+
+    @Test
+    void whenUpdateStageIsNotAvailableStage_ShouldThrowDealExceptionActionNotAllowed() {
+        // given
+        var notAvailableStageCode = 0;
+        var dealId = UUID.randomUUID();
+
+        // when, then
+        assertThatThrownBy(() -> SUT.updateStage(dealId, notAvailableStageCode))
+                .isInstanceOf(DealException.ActionNotAllowedException.class)
+                .hasMessage("Action on DealStage not allowed :: stage not assignable");
+    }
 }

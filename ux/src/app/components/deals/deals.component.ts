@@ -4,12 +4,20 @@ import {DealStage} from '../../models/deal/deal-stage';
 import {DealService} from '../../services/deal/deal.service';
 import {ButtonComponent, ButtonStyle} from '../common/form-elements/button/button.component';
 import {faBars, faHandshake} from '@fortawesome/free-solid-svg-icons';
-import {CdkDrag, CdkDragDrop, CdkDragHandle, CdkDropList, CdkDropListGroup} from '@angular/cdk/drag-drop';
+import {
+  CdkDrag,
+  CdkDragDrop,
+  CdkDragHandle,
+  CdkDropList,
+  CdkDropListGroup,
+  moveItemInArray, transferArrayItem
+} from '@angular/cdk/drag-drop';
 import {Dialog} from '@angular/cdk/dialog';
 import {NewDealFormComponent} from './new-deal-form/new-deal-form.component';
 import {Deal} from '../../models/deal/deal';
 import {RouterLink} from '@angular/router';
 import {FaIconComponent} from '@fortawesome/angular-fontawesome';
+import {LeadSummary} from '../../models/lead/lead-summary';
 
 @Component({
   selector: 'app-deals',
@@ -52,7 +60,19 @@ export class DealsComponent {
   }
 
   drop(event: CdkDragDrop<KanbanColumnProperties>): void {
-
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data.deals, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data.deals,
+        event.container.data.deals,
+        event.previousIndex,
+        event.currentIndex
+      );
+      const dealId = (event.item.data as DealSummary).id;
+      const stageCode = event.container.data.stage.code;
+      this.changeDealStage(dealId, stageCode);
+    }
   }
 
   openNewDealModal(): void {
@@ -74,6 +94,10 @@ export class DealsComponent {
   private createDeal(deal: Deal): void {
     this.service.create(deal).subscribe(data =>
       this.kanbanData[data.stage!].deals.push(data as DealSummary));
+  }
+
+  private changeDealStage(dealId: string, stageCode: number): void {
+    this.service.changeStage(dealId, stageCode).subscribe();
   }
 
   protected readonly ButtonStyle = ButtonStyle;

@@ -53,4 +53,13 @@ public class DealController {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }
+
+    @PostMapping("{id}/stage/{stageCode}")
+    public ResponseEntity<?> changeStage(
+            @PathVariable UUID id,
+            @PathVariable Integer stageCode
+    ) {
+        service.updateStage(id, stageCode);
+        return ResponseEntity.ok().build();
+    }
 }

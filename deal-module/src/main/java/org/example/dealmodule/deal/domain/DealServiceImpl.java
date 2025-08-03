@@ -5,6 +5,7 @@ import org.example.activitymodule.ActivityInternalApi;
 import org.example.dealmodule.exception.DealException;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -40,6 +41,24 @@ class DealServiceImpl implements DealService {
     @Override
     public void delete(UUID id) {
         repository.delete(id);
+    }
+
+    @Override
+    public void updateStage(UUID id, Integer stageCode) {
+        var stage = Arrays.stream(DealStage.values())
+                .filter(v -> v.getCode().equals(stageCode))
+                .findFirst()
+                .orElseThrow(() -> DealException.actionNotAllowed(DealStage.class, "invalid stage code"));
+
+        if (stage.equals(DealStage.NOT_AVAILABLE)) {
+            throw DealException.actionNotAllowed(DealStage.class, "stage not assignable");
+        }
+
+        var deal = repository.findById(id)
+                .map(d -> d.withStage(stage))
+                .orElseThrow(() -> DealException.notFound(Deal.class, id));
+
+        repository.update(id, deal);
     }
 
     private Deal fetchActivities(Deal deal) {

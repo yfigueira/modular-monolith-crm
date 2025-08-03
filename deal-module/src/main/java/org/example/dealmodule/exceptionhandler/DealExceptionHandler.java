@@ -45,4 +45,16 @@ public class DealExceptionHandler {
                 .status(HttpStatus.BAD_REQUEST)
                 .body(exceptionResponse);
     }
+
+    @ExceptionHandler(DealException.ActionNotAllowedException.class)
+    public ResponseEntity<ExceptionResponse> handleActionNotAllowedException(DealException.ActionNotAllowedException ex) {
+        var exceptionResponse = ExceptionResponse.builder()
+                .message(ex.getMessage())
+                .timestamp(LocalDateTime.now())
+                .build();
+
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
+                .body(exceptionResponse);
+    }
 }

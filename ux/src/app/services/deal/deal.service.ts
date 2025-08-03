@@ -35,4 +35,8 @@ export class DealService {
   delete(id: string): Observable<void> {
     return this.httpClient.delete<void>(`${this.DEALS_API}/${id}`);
   }
+
+  changeStage(dealId: string, stageCode: number): Observable<void> {
+    return this.httpClient.post<void>(`${this.DEALS_API}/${dealId}/stage/${stageCode}`, null)
+  }
 }

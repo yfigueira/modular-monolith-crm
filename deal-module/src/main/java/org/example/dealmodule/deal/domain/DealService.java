@@ -14,4 +14,6 @@ public interface DealService {
     Deal update(UUID id, Deal deal);
 
     void delete(UUID id);
+
+    void updateStage(UUID id, Integer stageCode);
 }
