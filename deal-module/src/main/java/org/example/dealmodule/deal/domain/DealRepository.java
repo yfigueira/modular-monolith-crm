@@ -11,4 +11,8 @@ public interface DealRepository {
     Optional<Deal> findById(UUID id);
 
     Deal create(Deal deal);
+
+    Deal update(UUID id, Deal deal);
+
+    void delete(UUID id);
 }

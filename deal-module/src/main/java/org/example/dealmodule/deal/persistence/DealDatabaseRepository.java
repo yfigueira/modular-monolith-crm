@@ -3,6 +3,7 @@ package org.example.dealmodule.deal.persistence;
 import lombok.RequiredArgsConstructor;
 import org.example.dealmodule.deal.domain.Deal;
 import org.example.dealmodule.deal.domain.DealRepository;
+import org.example.dealmodule.exception.DealException;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -34,5 +35,21 @@ class DealDatabaseRepository implements DealRepository {
         var entity = mapper.toEntity(deal);
         var created = jpaRepository.save(entity);
         return mapper.toDomain(created);
+    }
+
+    @Override
+    public Deal update(UUID id, Deal deal) {
+        return jpaRepository.findById(id)
+                .map(entity -> mapper.updateEntity(deal, entity))
+                .map(jpaRepository::save)
+                .map(mapper::toDomain)
+                .orElseThrow(() -> DealException.notFound(Deal.class, id));
+    }
+
+    @Override
+    public void delete(UUID id) {
+        var entity = jpaRepository.findById(id)
+                .orElseThrow(() -> DealException.notFound(Deal.class, id));
+        jpaRepository.delete(entity);
     }
 }

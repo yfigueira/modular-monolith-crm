@@ -1,4 +1,45 @@
-<div class="app-lead-return-container" (click)="goBack()">
+<div class="app-deal-return-container" (click)="goBack()">
   <fa-icon [icon]="faAngleLeft" />
   <span>Return</span>
+</div>
+<div class="deal-details-container">
+  <div class="deal-management-actions-container">
+    <app-button name="save-deal"
+                text="Save"
+                [icon]="faFloppyDisk"
+                [style]="ButtonStyle.INFO"
+                (clickEvent)="updateDeal()" />
+    <app-button name="remove-deal"
+                text="Remove"
+                [icon]="faTrashCan"
+                [style]="ButtonStyle.DANGER"
+                (clickEvent)="deleteDeal()" />
+  </div>
+  <div class="deal-form-container">
+    <div>
+      <app-input id="title"
+                 label="Title"
+                 [(value)]="deal.title" />
+      <app-input id="expected-revenue"
+                 label="Expected revenue"
+                 [(value)]="deal.expectedRevenue" />
+      <app-select id="deal-contact"
+                  label="Owner"
+                  [options]="getContactsOptions()"
+                  [(value)]="deal.contact"/>
+    </div>
+    <div>
+      <app-datetime id="expected-close-date"
+                    label="Expected close date"
+                    [(value)]="deal.expectedCloseDate" />
+      <app-select id="deal-owner"
+                  label="Owner"
+                  [options]="getUsersOptions()"
+                  [(value)]="deal.owner"/>
+    </div>
+  </div>
+  <hr>
+  <div class="deal-activities-container">
+    <app-activities [activities]="deal.activities" [parent]="deal.id" />
+  </div>
 </div>

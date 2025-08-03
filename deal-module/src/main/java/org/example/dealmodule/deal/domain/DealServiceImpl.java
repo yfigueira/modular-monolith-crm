@@ -32,6 +32,16 @@ class DealServiceImpl implements DealService {
         return repository.create(deal.withStage(DealStage.NEW));
     }
 
+    @Override
+    public Deal update(UUID id, Deal deal) {
+        return repository.update(id, deal);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        repository.delete(id);
+    }
+
     private Deal fetchActivities(Deal deal) {
         var activities = activityInternalApi.getByEntity(deal.id());
         return deal.withActivities(activities);

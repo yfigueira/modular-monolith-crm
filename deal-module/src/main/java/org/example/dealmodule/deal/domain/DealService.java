@@ -10,4 +10,8 @@ public interface DealService {
     Deal getById(UUID id);
 
     Deal create(Deal deal);
+
+    Deal update(UUID id, Deal deal);
+
+    void delete(UUID id);
 }

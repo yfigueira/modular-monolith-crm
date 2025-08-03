@@ -27,4 +27,12 @@ export class DealService {
   create(deal: Deal): Observable<Deal> {
     return this.httpClient.post<Deal>(`${this.DEALS_API}`, deal);
   }
+
+  update(deal: Deal): Observable<Deal> {
+    return this.httpClient.put<Deal>(`${this.DEALS_API}/${deal.id}`, deal);
+  }
+
+  delete(id: string): Observable<void> {
+    return this.httpClient.delete<void>(`${this.DEALS_API}/${id}`);
+  }
 }

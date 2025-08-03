@@ -2,8 +2,7 @@ package org.example.dealmodule.deal.persistence;
 
 import org.example.dealmodule.deal.domain.Deal;
 import org.example.dealmodule.deal.domain.DealStage;
-import org.mapstruct.Mapper;
-import org.mapstruct.MappingConstants;
+import org.mapstruct.*;
 
 import java.util.Arrays;
 
@@ -13,6 +12,11 @@ interface DealMapper {
     Deal toDomain(DealEntity entity);
 
     DealEntity toEntity(Deal domain);
+
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "version", ignore = true)
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    DealEntity updateEntity(Deal deal, @MappingTarget DealEntity entity);
 
     default DealStage mapStage(Integer entity) {
         return Arrays.stream(DealStage.values())

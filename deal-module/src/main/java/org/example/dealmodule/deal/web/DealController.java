@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.dealmodule.deal.domain.DealService;
 import org.example.dealmodule.deal.web.dto.DealDto;
 import org.example.dealmodule.deal.web.dto.DealSummary;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,5 +36,21 @@ public class DealController {
         var deal = DealDto.mapper().toDomain(dto);
         var created = service.create(deal);
         return DealDto.mapper().toDto(created);
+    }
+
+    @PutMapping("{id}")
+    public DealDto update(
+            @PathVariable UUID id,
+            @RequestBody @Valid DealDto dto
+    ) {
+        var deal = DealDto.mapper().toDomain(dto);
+        var updated = service.update(id, deal);
+        return DealDto.mapper().toDto(updated);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> delete(@PathVariable UUID id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
