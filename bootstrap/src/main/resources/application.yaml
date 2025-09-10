@@ -1,13 +1,13 @@
 spring:
   application:
     name: bootstrap
-  profiles:
-    active: dev
+
   datasource:
     url: ${DATABASE_URL}/${DATABASE_NAME}
-    username: ${DATABASE_USERNAME}
+    username: ${DATABASE_NAME}
     password: ${DATABASE_PASSWORD}
     driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: none
@@ -15,6 +15,7 @@ spring:
 app:
   cors:
     allowed-origins: http://localhost:4200
+
   auth-server:
     url: ${AUTH_SERVER_URL}
     realm: ${AUTH_SERVER_REALM}

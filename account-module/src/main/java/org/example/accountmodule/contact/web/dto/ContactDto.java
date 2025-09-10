@@ -37,11 +37,11 @@ public record ContactDto(
     public interface ContactDtoMapper extends DtoMapper<Contact, ContactDto> {
 
         default Account mapAccount(UUID entity) {
-            return Account.builder().id(entity).build();
+            return entity == null ? null : Account.builder().id(entity).build();
         }
 
         default UUID mapAccount(Account domain) {
-            return domain.id();
+            return domain == null ? null : domain.id();
         }
 
         default ContactPriority mapContactPriority(Integer dto) {

@@ -34,6 +34,42 @@ services:
     networks:
       - modular-monolith-crm-net
 
+  modular-monolith-crm-api:
+    container_name: modular-monolith-crm-api
+    build:
+      context: .
+    environment:
+      DATABASE_URL: jdbc:postgresql://modular-monolith-crm-db:5432
+      DATABASE_NAME: admin
+      DATABASE_PASSWORD: secret
+      AUTH_SERVER_URL: http://modular-monolith-crm-auth-server:8080
+      AUTH_SERVER_REALM: crm-realm
+      AUTH_SERVER_API_CLIENT_ID: crm-api-client
+      AUTH_SERVER_API_CLIENT_SECRET: u9Ukq7VL4SXCyStfGjdY9RJHSOpvYDRB
+    ports:
+      - "8000:8000"
+    depends_on:
+      modular-monolith-crm-auth-server:
+        condition: service_started
+    networks:
+      - modular-monolith-crm-net
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8000/api/actuator/health" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  modular-monolith-crm-ux:
+    container_name: modular-monolith-crm-ux
+    build:
+      context: ./ux
+    ports:
+      - "4200:80"
+    depends_on:
+      modular-monolith-crm-api:
+        condition: service_healthy
+    networks:
+      - modular-monolith-crm-net
 
 networks:
   modular-monolith-crm-net:
