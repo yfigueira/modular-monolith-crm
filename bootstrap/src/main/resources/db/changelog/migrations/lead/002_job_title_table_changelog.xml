@@ -24,4 +24,31 @@
                     FOR EACH ROW EXECUTE FUNCTION common.update_audit_columns()
         </createProcedure>
     </changeSet>
+
+    <changeSet id="3" author="yfp">
+        <insert schemaName="lead" tableName="job_title">
+            <column name="id" value="f1a2b3c4-1a2b-4c3d-8e9f-1234567890ab"/>
+            <column name="name" value="Lead Manager"/>
+        </insert>
+
+        <insert schemaName="lead" tableName="job_title">
+            <column name="id" value="a2b3c4d5-2b3c-4d5e-9f0a-2345678901bc"/>
+            <column name="name" value="Sales Executive"/>
+        </insert>
+
+        <insert schemaName="lead" tableName="job_title">
+            <column name="id" value="b3c4d5e6-3c4d-4e6f-0a1b-3456789012cd"/>
+            <column name="name" value="Marketing Specialist"/>
+        </insert>
+
+        <insert schemaName="lead" tableName="job_title">
+            <column name="id" value="c4d5e6f7-4d5e-4f7a-1b2c-4567890123de"/>
+            <column name="name" value="Business Analyst"/>
+        </insert>
+
+        <insert schemaName="lead" tableName="job_title">
+            <column name="id" value="d5e6f7a8-5e6f-4a8b-2c3d-5678901234ef"/>
+            <column name="name" value="Customer Success"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>

@@ -24,4 +24,31 @@
                     FOR EACH ROW EXECUTE FUNCTION common.update_audit_columns()
         </createProcedure>
     </changeSet>
+
+    <changeSet id="3" author="yfp">
+        <insert schemaName="lead" tableName="company">
+            <column name="id" value="a1b2c3d4-1f2e-4a5b-8c9d-1234567890ab"/>
+            <column name="name" value="NordicTech"/>
+        </insert>
+
+        <insert schemaName="lead" tableName="company">
+            <column name="id" value="b2c3d4e5-2f3a-4b6c-9d8e-2345678901bc"/>
+            <column name="name" value="AlpineSolutions"/>
+        </insert>
+
+        <insert schemaName="lead" tableName="company">
+            <column name="id" value="c3d4e5f6-3f4b-4c7d-8e9f-3456789012cd"/>
+            <column name="name" value="BalticSystems"/>
+        </insert>
+
+        <insert schemaName="lead" tableName="company">
+            <column name="id" value="d4e5f6a7-4f5c-4d8e-9f0a-4567890123de"/>
+            <column name="name" value="IberiaTech"/>
+        </insert>
+
+        <insert schemaName="lead" tableName="company">
+            <column name="id" value="e5f6a7b8-5f6d-4e9f-0a1b-5678901234ef"/>
+            <column name="name" value="ScandiSoft"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>

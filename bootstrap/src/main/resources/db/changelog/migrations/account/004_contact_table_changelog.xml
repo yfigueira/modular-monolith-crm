@@ -43,4 +43,76 @@
                     FOR EACH ROW EXECUTE FUNCTION common.update_audit_columns()
         </createProcedure>
     </changeSet>
+
+    <changeSet id="3" author="yfp">
+        <insert schemaName="account" tableName="contact">
+            <column name="id" value="f1c4a8d2-1b23-4f6a-9c8d-2f1b9a3c4d5e"/>
+            <column name="first_name" value="Anna"/>
+            <column name="last_name" value="Schneider"/>
+            <column name="email" value="anna.schneider@technova.de"/>
+            <column name="priority" valueNumeric="1"/>
+            <column name="company" value="8a1f6e67-9a1d-4f22-9f5d-8fceaa3db1e0"/>
+            <column name="job_title" value="d3a4e2f1-8c2b-4d9a-9e3f-1f4d8c0a5e7a"/>
+            <column name="phone_number" value="+49 30 1234567"/>
+            <column name="private_email" value="anna.schneider@gmail.com"/>
+            <column name="private_phone_number" value="+49 171 987654"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="account" tableName="contact">
+            <column name="id" value="a3d2f9c7-5e41-4b92-8c1a-2e7b4d9f1a23"/>
+            <column name="first_name" value="Carlos"/>
+            <column name="last_name" value="Morales"/>
+            <column name="email" value="carlos.morales@solaris.es"/>
+            <column name="priority" valueNumeric="2"/>
+            <column name="company" value="1f65bcf7-8c12-47a3-93b6-b4f0ffafc9b2"/>
+            <column name="job_title" value="b7f6c9e2-3d44-4d1a-b8c7-5f1a8e2d9f33"/>
+            <column name="phone_number" value="+34 91 4567890"/>
+            <column name="private_email" value="carlos.morales@yahoo.es"/>
+            <column name="private_phone_number" value="+34 600 112233"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="account" tableName="contact">
+            <column name="id" value="b6e5c1d8-7a92-4c2d-9f8a-3e4f5d6a7b8c"/>
+            <column name="first_name" value="Elina"/>
+            <column name="last_name" value="Korhonen"/>
+            <column name="email" value="elina.korhonen@nordicfoods.fi"/>
+            <column name="priority" valueNumeric="1"/>
+            <column name="company" value="2e8c9a42-63c0-4cb1-9e37-f1cb48c1f4fd"/>
+            <column name="job_title" value="e2c1f9d4-4b55-45a9-9f1d-2c3a4b5d6e7f"/>
+            <column name="phone_number" value="+358 9 123456"/>
+            <column name="private_email" value="elina.k@gmail.com"/>
+            <column name="private_phone_number" value="+358 40 9988776"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="account" tableName="contact">
+            <column name="id" value="c8d7e6f5-9b34-41a2-8f6c-7d9e1c2b3a4f"/>
+            <column name="first_name" value="Lukas"/>
+            <column name="last_name" value="Müller"/>
+            <column name="email" value="lukas.muller@technova.de"/>
+            <column name="priority" valueNumeric="3"/>
+            <column name="company" value="8a1f6e67-9a1d-4f22-9f5d-8fceaa3db1e0"/>
+            <column name="job_title" value="a9b8c7d6-5e44-41a8-92c1-d3f4e5a6b7c8"/>
+            <column name="phone_number" value="+49 30 7654321"/>
+            <column name="private_email" value="lukas.mueller@outlook.com"/>
+            <column name="private_phone_number" value="+49 172 334455"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="account" tableName="contact">
+            <column name="id" value="d9f8a7b6-1c23-45d9-8e2f-3b4c5d6e7f8a"/>
+            <column name="first_name" value="Maria"/>
+            <column name="last_name" value="Lopez"/>
+            <column name="email" value="maria.lopez@solaris.es"/>
+            <column name="priority" valueNumeric="2"/>
+            <column name="company" value="1f65bcf7-8c12-47a3-93b6-b4f0ffafc9b2"/>
+            <column name="job_title" value="c4d3e2f1-6b77-49a1-8e2d-3f4c5b6a7d8e"/>
+            <column name="phone_number" value="+34 91 9876543"/>
+            <column name="private_email" value="maria.lopez@gmail.com"/>
+            <column name="private_phone_number" value="+34 650 556677"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>

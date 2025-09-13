@@ -38,4 +38,46 @@
                     FOR EACH ROW EXECUTE FUNCTION common.update_audit_columns()
         </createProcedure>
     </changeSet>
+
+    <changeSet id="3" author="yfp">
+        <insert schemaName="account" tableName="account">
+            <column name="id" value="8a1f6e67-9a1d-4f22-9f5d-8fceaa3db1e0"/>
+            <column name="name" value="TechNova Ltd."/>
+            <column name="country" value="Germany"/>
+            <column name="city" value="Berlin"/>
+            <column name="tin" value="DE123456789"/>
+            <column name="street" value="Alexanderplatz"/>
+            <column name="street_number" value="12A"/>
+            <column name="zip_code" value="10178"/>
+            <column name="web_url" value="https://www.technova.de"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="account" tableName="account">
+            <column name="id" value="1f65bcf7-8c12-47a3-93b6-b4f0ffafc9b2"/>
+            <column name="name" value="Solaris Energy"/>
+            <column name="country" value="Spain"/>
+            <column name="city" value="Madrid"/>
+            <column name="tin" value="ES556677889"/>
+            <column name="street" value="Gran Via"/>
+            <column name="street_number" value="45"/>
+            <column name="zip_code" value="28013"/>
+            <column name="web_url" value="https://solaris.es"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="account" tableName="account">
+            <column name="id" value="2e8c9a42-63c0-4cb1-9e37-f1cb48c1f4fd"/>
+            <column name="name" value="NordicFoods Oy"/>
+            <column name="country" value="Finland"/>
+            <column name="city" value="Helsinki"/>
+            <column name="tin" value="FI445566778"/>
+            <column name="street" value="Mannerheimintie"/>
+            <column name="street_number" value="22"/>
+            <column name="zip_code" value="00100"/>
+            <column name="web_url" value="http://nordicfoods.fi"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+    </changeSet>
+
 </databaseChangeLog>

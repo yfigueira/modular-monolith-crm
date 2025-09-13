@@ -50,4 +50,217 @@
         </createProcedure>
     </changeSet>
 
+    <changeSet id="4" author="yfp">
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="a1b2c3d4-1111-4a5b-8c9d-aaaa11111111"/>
+            <column name="type" valueNumeric="1"/>
+            <column name="subject" value="Introductory Call"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="a1b2c3d4-1111-4a5b-8c9d-1234567890aa"/>
+            <column name="entity_type" valueNumeric="1"/>
+            <column name="owner" value="fdd30841-9492-4335-85d7-c01e35927838"/>
+            <column name="description" value="Discuss initial requirements"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="b2c3d4e5-2222-4b6c-9d8e-bbbb22222222"/>
+            <column name="type" valueNumeric="2"/>
+            <column name="subject" value="Follow-up Email"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="f1c4a8d2-1b23-4f6a-9c8d-2f1b9a3c4d5e"/>
+            <column name="entity_type" valueNumeric="2"/>
+            <column name="owner" value="234fae00-1676-4820-ac39-6674236717e7"/>
+            <column name="description" value="Send follow-up with proposal"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="c3d4e5f6-3333-4e6f-0a1b-cccc33333333"/>
+            <column name="type" valueNumeric="3"/>
+            <column name="subject" value="Contract Review"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="d1a2b3c4-5e6f-4789-9012-abcdef123456"/>
+            <column name="entity_type" valueNumeric="3"/>
+            <column name="owner" value="ba70112e-5bb5-4fce-81d0-361256117067"/>
+            <column name="description" value="Review contract terms with client"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="d4e5f6a7-4444-4f7a-1b2c-dddd44444444"/>
+            <column name="type" valueNumeric="4"/>
+            <column name="subject" value="Product Demo"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="b2c3d4e5-2222-4b6c-9d8e-2345678901bb"/>
+            <column name="entity_type" valueNumeric="1"/>
+            <column name="owner" value="734740e3-5395-44f8-8981-3cf5847369e7"/>
+            <column name="description" value="Demo product features to lead"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="e5f6a7b8-5555-4a8b-2c3d-eeee55555555"/>
+            <column name="type" valueNumeric="1"/>
+            <column name="subject" value="Check-in Call"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="c8d7e6f5-9b34-41a2-8f6c-7d9e1c2b3a4f"/>
+            <column name="entity_type" valueNumeric="2"/>
+            <column name="owner" value="fdd30841-9492-4335-85d7-c01e35927838"/>
+            <column name="description" value="Monthly check-in call with contact"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="f6a7b8c9-6666-4b9c-3d4e-ffff66666666"/>
+            <column name="type" valueNumeric="2"/>
+            <column name="subject" value="Negotiation Meeting"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="e2b3c4d5-6f78-4890-0123-456789abcdef"/>
+            <column name="entity_type" valueNumeric="3"/>
+            <column name="owner" value="234fae00-1676-4820-ac39-6674236717e7"/>
+            <column name="description" value="Negotiate deal terms with client"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="d7b8c9d0-7777-4c0d-4e5f-aaaa77777777"/>
+            <column name="type" valueNumeric="3"/>
+            <column name="subject" value="Qualification Call"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="c3d4e5f6-3333-4e6f-0a1b-3456789012cc"/>
+            <column name="entity_type" valueNumeric="1"/>
+            <column name="owner" value="ba70112e-5bb5-4fce-81d0-361256117067"/>
+            <column name="description" value="Qualify lead requirements"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="b8c9d0e1-8888-4d1e-5f6a-bbbb88888888"/>
+            <column name="type" valueNumeric="4"/>
+            <column name="subject" value="Contract Follow-up"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="b6e5c1d8-7a92-4c2d-9f8a-3e4f5d6a7b8c"/>
+            <column name="entity_type" valueNumeric="2"/>
+            <column name="owner" value="734740e3-5395-44f8-8981-3cf5847369e7"/>
+            <column name="description" value="Ensure contract signature completed"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="b9d0e1f2-9999-4e2f-6a7b-cccc99999999"/>
+            <column name="type" valueNumeric="1"/>
+            <column name="subject" value="Payment Discussion"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="d4f5e6a7-8b90-4c1d-2345-6789abcdef12"/>
+            <column name="entity_type" valueNumeric="3"/>
+            <column name="owner" value="fdd30841-9492-4335-85d7-c01e35927838"/>
+            <column name="description" value="Discuss payment schedule"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="c0e1f2a3-1010-4f3a-7b8c-dddd10101010"/>
+            <column name="type" valueNumeric="2"/>
+            <column name="subject" value="Follow-up Call"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="d4e5f6a7-4444-4f7a-1b2c-4567890123dd"/>
+            <column name="entity_type" valueNumeric="1"/>
+            <column name="owner" value="234fae00-1676-4820-ac39-6674236717e7"/>
+            <column name="description" value="Follow-up call with lead"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="a1f2e3f4-1111-4a4b-8c8d-eeee11111111"/>
+            <column name="type" valueNumeric="3"/>
+            <column name="subject" value="Product Feedback"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="f1c4a8d2-1b23-4f6a-9c8d-2f1b9a3c4d5e"/>
+            <column name="entity_type" valueNumeric="2"/>
+            <column name="owner" value="ba70112e-5bb5-4fce-81d0-361256117067"/>
+            <column name="description" value="Collect feedback from contact"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="e2f3d4d5-1212-4b5c-9d9e-ffff12121212"/>
+            <column name="type" valueNumeric="4"/>
+            <column name="subject" value="Finalize Agreement"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="d1a2b3c4-5e6f-4789-9012-abcdef123456"/>
+            <column name="entity_type" valueNumeric="3"/>
+            <column name="owner" value="734740e3-5395-44f8-8981-3cf5847369e7"/>
+            <column name="description" value="Finalize agreement terms"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="c3e4e5e6-1313-4c6d-0a1b-aaaa13131313"/>
+            <column name="type" valueNumeric="1"/>
+            <column name="subject" value="Intro Call"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="e5f6a7b8-5555-4a8b-2c3d-5678901234ff"/>
+            <column name="entity_type" valueNumeric="1"/>
+            <column name="owner" value="fdd30841-9492-4335-85d7-c01e35927838"/>
+            <column name="description" value="Initial introduction call"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="a4b5f6b7-1414-4d7e-1b2c-bbbb14141414"/>
+            <column name="type" valueNumeric="2"/>
+            <column name="subject" value="Email Follow-up"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="c8d7e6f5-9b34-41a2-8f6c-7d9e1c2b3a4f"/>
+            <column name="entity_type" valueNumeric="2"/>
+            <column name="owner" value="234fae00-1676-4820-ac39-6674236717e7"/>
+            <column name="description" value="Follow-up email regarding proposal"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="activity" tableName="activity">
+            <column name="id" value="c5d6c7c8-1515-4e8f-2c3d-cccc15151515"/>
+            <column name="type" valueNumeric="3"/>
+            <column name="subject" value="Closing Call"/>
+            <column name="scheduled_at" valueComputed="NOW()"/>
+            <column name="entity" value="e2b3c4d5-6f78-4890-0123-456789abcdef"/>
+            <column name="entity_type" valueNumeric="3"/>
+            <column name="owner" value="ba70112e-5bb5-4fce-81d0-361256117067"/>
+            <column name="description" value="Final closing call with client"/>
+            <column name="completed_at" valueComputed="NOW()"/>
+            <column name="status" valueNumeric="1"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+    </changeSet>
+
 </databaseChangeLog>

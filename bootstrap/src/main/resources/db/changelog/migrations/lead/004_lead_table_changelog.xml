@@ -52,4 +52,86 @@
             <column name="subject" type="varchar" />
         </addColumn>
     </changeSet>
+
+    <changeSet id="4" author="yfp">
+        <insert schemaName="lead" tableName="lead">
+            <column name="id" value="a1b2c3d4-1111-4a5b-8c9d-1234567890aa"/>
+            <column name="first_name" value="Sofia"/>
+            <column name="last_name" value="Larsen"/>
+            <column name="email" value="sofia.larsen@nordictech.com"/>
+            <column name="state" valueNumeric="1"/>
+            <column name="job_title" value="f1a2b3c4-1a2b-4c3d-8e9f-1234567890ab"/>
+            <column name="company" value="a1b2c3d4-1f2e-4a5b-8c9d-1234567890ab"/>
+            <column name="owner" value="fdd30841-9492-4335-85d7-c01e35927838"/>
+            <column name="is_active" valueBoolean="true"/>
+            <column name="city" value="Copenhagen"/>
+            <column name="phone_number" value="+45 12345678"/>
+            <column name="version" valueNumeric="1"/>
+            <column name="subject" value="Initial Contact"/>
+        </insert>
+
+        <insert schemaName="lead" tableName="lead">
+            <column name="id" value="b2c3d4e5-2222-4b6c-9d8e-2345678901bb"/>
+            <column name="first_name" value="Marco"/>
+            <column name="last_name" value="Rossi"/>
+            <column name="email" value="marco.rossi@alpinesolutions.com"/>
+            <column name="state" valueNumeric="2"/>
+            <column name="job_title" value="a2b3c4d5-2b3c-4d5e-9f0a-2345678901bc"/>
+            <column name="company" value="b2c3d4e5-2f3a-4b6c-9d8e-2345678901bc"/>
+            <column name="owner" value="234fae00-1676-4820-ac39-6674236717e7"/>
+            <column name="is_active" valueBoolean="true"/>
+            <column name="city" value="Zurich"/>
+            <column name="phone_number" value="+41 78901234"/>
+            <column name="version" valueNumeric="1"/>
+            <column name="subject" value="Follow-up Meeting"/>
+        </insert>
+
+        <insert schemaName="lead" tableName="lead">
+            <column name="id" value="c3d4e5f6-3333-4e6f-0a1b-3456789012cc"/>
+            <column name="first_name" value="Elena"/>
+            <column name="last_name" value="Petrov"/>
+            <column name="email" value="elena.petrov@balticsystems.com"/>
+            <column name="state" valueNumeric="1"/>
+            <column name="job_title" value="b3c4d5e6-3c4d-4e6f-0a1b-3456789012cd"/>
+            <column name="company" value="c3d4e5f6-3f4b-4c7d-8e9f-3456789012cd"/>
+            <column name="owner" value="ba70112e-5bb5-4fce-81d0-361256117067"/>
+            <column name="is_active" valueBoolean="false"/>
+            <column name="city" value="Riga"/>
+            <column name="phone_number" value="+371 12345678"/>
+            <column name="version" valueNumeric="1"/>
+            <column name="subject" value="Product Inquiry"/>
+        </insert>
+
+        <insert schemaName="lead" tableName="lead">
+            <column name="id" value="d4e5f6a7-4444-4f7a-1b2c-4567890123dd"/>
+            <column name="first_name" value="Isabel"/>
+            <column name="last_name" value="Garcia"/>
+            <column name="email" value="isabel.garcia@iberiatech.com"/>
+            <column name="state" valueNumeric="2"/>
+            <column name="job_title" value="c4d5e6f7-4d5e-4f7a-1b2c-4567890123de"/>
+            <column name="company" value="d4e5f6a7-4f5c-4d8e-9f0a-4567890123de"/>
+            <column name="owner" value="734740e3-5395-44f8-8981-3cf5847369e7"/>
+            <column name="is_active" valueBoolean="true"/>
+            <column name="city" value="Madrid"/>
+            <column name="phone_number" value="+34 987654321"/>
+            <column name="version" valueNumeric="1"/>
+            <column name="subject" value="Initial Outreach"/>
+        </insert>
+
+        <insert schemaName="lead" tableName="lead">
+            <column name="id" value="e5f6a7b8-5555-4a8b-2c3d-5678901234ff"/>
+            <column name="first_name" value="Lars"/>
+            <column name="last_name" value="Johansson"/>
+            <column name="email" value="lars.johansson@scandisoft.com"/>
+            <column name="state" valueNumeric="3"/>
+            <column name="job_title" value="d5e6f7a8-5e6f-4a8b-2c3d-5678901234ef"/>
+            <column name="company" value="e5f6a7b8-5f6d-4e9f-0a1b-5678901234ef"/>
+            <column name="owner" value="fdd30841-9492-4335-85d7-c01e35927838"/>
+            <column name="is_active" valueBoolean="true"/>
+            <column name="city" value="Stockholm"/>
+            <column name="phone_number" value="+46 12345678"/>
+            <column name="version" valueNumeric="1"/>
+            <column name="subject" value="Follow-up Call"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>

@@ -32,4 +32,56 @@
                     FOR EACH ROW EXECUTE FUNCTION common.update_audit_columns()
         </createProcedure>
     </changeSet>
+
+    <changeSet id="3" author="yfp">
+        <insert schemaName="deal" tableName="deal">
+            <column name="id" value="d1a2b3c4-5e6f-4789-9012-abcdef123456"/>
+            <column name="title" value="TechNova Q3 Expansion"/>
+            <column name="stage" valueNumeric="2"/>
+            <column name="expected_revenue" value="50000"/>
+            <column name="contact" value="f1c4a8d2-1b23-4f6a-9c8d-2f1b9a3c4d5e"/>
+            <column name="owner" value="fdd30841-9492-4335-85d7-c01e35927838"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="deal" tableName="deal">
+            <column name="id" value="e2b3c4d5-6f78-4890-0123-abcdef234567"/>
+            <column name="title" value="Solaris Energy New Contract"/>
+            <column name="stage" valueNumeric="3"/>
+            <column name="expected_revenue" value="75000"/>
+            <column name="contact" value="a3d2f9c7-5e41-4b92-8c1a-2e7b4d9f1a23"/>
+            <column name="owner" value="234fae00-1676-4820-ac39-6674236717e7"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="deal" tableName="deal">
+            <column name="id" value="f3c4d5e6-7f89-4901-1234-abcdef345678"/>
+            <column name="title" value="NordicFoods Supply Agreement"/>
+            <column name="stage" valueNumeric="1"/>
+            <column name="expected_revenue" value="60000"/>
+            <column name="contact" value="b6e5c1d8-7a92-4c2d-9f8a-3e4f5d6a7b8c"/>
+            <column name="owner" value="ba70112e-5bb5-4fce-81d0-361256117067"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="deal" tableName="deal">
+            <column name="id" value="d1a2b3c4-5e6f-4789-9012-abcdef654321"/>
+            <column name="title" value="TechNova Software Upgrade"/>
+            <column name="stage" valueNumeric="4"/>
+            <column name="expected_revenue" value="40000"/>
+            <column name="contact" value="c8d7e6f5-9b34-41a2-8f6c-7d9e1c2b3a4f"/>
+            <column name="owner" value="734740e3-5395-44f8-8981-3cf5847369e7"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+
+        <insert schemaName="deal" tableName="deal">
+            <column name="id" value="c5e6f7a8-9f01-5123-3456-abcdef567890"/>
+            <column name="title" value="Solaris Energy HR Initiative"/>
+            <column name="stage" valueNumeric="2"/>
+            <column name="expected_revenue" value="35000"/>
+            <column name="contact" value="d9f8a7b6-1c23-45d9-8e2f-3b4c5d6e7f8a"/>
+            <column name="owner" value="fdd30841-9492-4335-85d7-c01e35927838"/>
+            <column name="version" valueNumeric="1"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>
